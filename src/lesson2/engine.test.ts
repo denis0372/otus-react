@@ -68,4 +68,16 @@ describe("simplify expression", () => {
   it("1 + 4 **", () => {
     expect(simplifyExp("1 + 4 **")).toEqual("1 + 4 ^ 2");
   });
+
+  it("3 !", () => {
+    expect(simplifyExp("3 !")).toEqual("1 * 2 * 3");
+  });
+
+  it("3!", () => {
+    expect(simplifyExp("3!")).toEqual("1 * 2 * 3");
+  });
+
+  it("1 + 3 !", () => {
+    expect(simplifyExp("1 + 3 !")).toEqual("1 + 1 * 2 * 3");
+  });
 });

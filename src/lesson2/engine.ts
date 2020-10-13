@@ -61,6 +61,21 @@ export const thirdPrioritiesCalc = (stack: ParsedLineType): number =>
   }, Number(stack[0]));
 
 export const simplifyExp = (line: string): string => {
+    
+    // squaring
     let newLine = line.replace(/\*\*/g, '^ 2');
+
+    // factorial
+    newLine = newLine.replace(/(\d+)( )?\!/g, (exp, numMatch) => {
+      const num = parseInt(numMatch, 10);
+      let count = 1;
+      let result = '';
+      while ( count <= num ) {
+        result = `${result} ${count === 1 ? '' : '*'} ${count}`
+        count ++;
+      }
+      return result.trim();
+    })
+
     return newLine;
   }
