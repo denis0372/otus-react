@@ -7,8 +7,11 @@
     "build": "npx webpack --mode production",
     "calc": "npx ts-node src/lesson2",
     "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
+    "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
+    "loki:approve": "npx loki approve",
     "test": "npx jest",
-    "check": "npm test && npm run lint",
+    "test:loki": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
+    "check": "npm run lint && npm test && npm run test:loki",
     "start": "npx webpack-dev-server --mode development --open --hot",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -66,6 +69,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@types/enzyme": "^3.10.7",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
   }
