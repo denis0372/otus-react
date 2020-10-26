@@ -15,8 +15,8 @@ const orderStates = [
 
 type OrderState = typeof orderStates[number];
 
-export const getUserOrderStates = (orderStates: OrderState[]): FIXME => {
-  const filteredStates = [] as FIXME;
+export const getUserOrderStates = (orderStates: OrderState[]): Array<OrderState> => {
+  const filteredStates = [] as Array<OrderState>;
   orderStates.forEach((element) => {
     if (element !== "buyingSupplies" && element !== "producing") {
       filteredStates.push(element);
