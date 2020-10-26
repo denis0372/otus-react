@@ -8,6 +8,6 @@ type FIXME = any;
 // Hint: infer
 export const getDefaultProps = <T>(
   component: React.ComponentType<T>
-): FIXME => {
+): Partial<T> | undefined => {
   return component.defaultProps;
 };

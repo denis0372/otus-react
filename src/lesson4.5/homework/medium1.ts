@@ -7,7 +7,7 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type FIXME = any;
 
-type Order =
+type OrderFirstLevel =
   | {
       state: "initial";
       sum: number;
@@ -17,6 +17,9 @@ type Order =
       sum: number;
       workerId: number;
     }
+  ;
+
+type OrderSecondLevel =
   | {
       state: "buyingSupplies";
       sum: number;
@@ -39,7 +42,9 @@ type Order =
       fullfillmentDate: Date;
     };
 
-export const filterOnlyInitialAndInWorkOrder = (order: Order): FIXME => {
+  type Order = OrderFirstLevel | OrderSecondLevel;
+
+export const filterOnlyInitialAndInWorkOrder = (order: Order): OrderFirstLevel | null => {
   if (order.state === "initial" || order.state === "inWork") {
     return order;
   }
