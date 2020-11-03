@@ -30,6 +30,7 @@ export class LoginForm extends Component<Props, State> {
         this.handleLoginChange = this.handleLoginChange.bind(this);
         this.handlePasswChange = this.handlePasswChange.bind(this);
         this.loginAction = this.loginAction.bind(this);
+        this.handleResize = this.handleResize.bind(this);
     }
 
     componentDidMount() {
@@ -49,13 +50,10 @@ export class LoginForm extends Component<Props, State> {
     }
 
     shouldComponentUpdate(nextState: State) {
-      // console.log("shouldComponentUpdate:" + (nextState.login !== this.state.login || nextState.passw !== this.state.passw));
       return nextState.login !== this.state.login || nextState.passw !== this.state.passw;
     }
 
     render() {
-
-        // console.log("Render");
 
         return(
             <div>

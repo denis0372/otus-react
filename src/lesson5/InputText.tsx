@@ -21,8 +21,6 @@ export class InputText extends Component<Prop, State> {
  
     componentDidUpdate(prevProps: Prop) {
 
-      // console.log("componentDidUpdate: " + prevProps.value + " -> " + this.props.value);
-
       if (prevProps.value !== this.props.value) {
         this.setState({value: this.props.value});
       }
