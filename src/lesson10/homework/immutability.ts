@@ -17,7 +17,7 @@ export const originalTeamToExpectedTeam = (
   originalTeam: OriginalTeam
 ): ExpectedTeam => {
   const {league} = originalTeam;
-  return {name: "New York Badgers", league: league, roster: 25};
+  return {name: "New York Badgers", league, roster: 25};
 };
 
 // Задание 2
@@ -25,8 +25,8 @@ export type SomeArray = Array<number | string>;
 
 export const originalArrayToExpectedArray = (originalArray: Readonly<SomeArray>): SomeArray => {
 
-  let result = originalArray.map((obj) => typeof obj === "number" ? obj + 1 : obj);
-  result = result.map((obj) => obj === 2 ? "two" : obj);
+  let result = originalArray.map((elt) => typeof elt === "number" ? elt + 1 : elt);
+  result[0] = "two";
 
   return result;
 };
