@@ -1,29 +1,38 @@
 import React from "react";
 
-import { UserScreen } from "./UserScreen";
+import { RawUserScreen } from "./UserScreen";
 import { shallow } from "enzyme";
-import { login } from "@/api/auth";
+import { logout } from "@/api/auth";
 
-const mockHistory = { push: jest.fn() };
-jest.mock("react-router-dom", () => ({
-  useHistory: () => mockHistory,
-}));
+import { createMemoryHistory, createLocation } from 'history';
+import { match } from 'react-router'
+
+const path = `/user/:name`;
+const history = createMemoryHistory();
+
+const matchObj: match<{ name: string }> = {
+    isExact: false,
+    path,
+    url: path.replace(':name', 'Denis'),
+    params: { name: "Denis" }
+};
+
+const location = createLocation(matchObj.url);
+
+history.location = location;
 
 jest.mock("@/api/auth", () => ({
-  login: jest.fn(),
+  logout: jest.fn(),
 }));
 
-describe("LoginScreen", () => {
-  it("navigates to user page on submit", async () => {
-    const name = "BobMarley";
-    const screen = shallow(<LoginScreen />);
+describe("UserScreen", () => {
+  it("logout action", async () => {
+    const screen = shallow(<RawUserScreen history={history} location={location} match={matchObj}/>);
 
-    screen.find("input").simulate("change", { target: { value: name } });
-    await screen
-      .find("form")
-      .simulate("submit", { preventDefault: () => null });
-
-    expect(login).toHaveBeenCalledWith(name);
-    expect(mockHistory.push).toHaveBeenCalledWith(`/user/${name}`);
+    const btn = screen.find("button");
+    await btn.simulate("click");
+   
+    expect(logout).toHaveBeenCalled();
+    expect(history.location.pathname).toEqual(`/`);
   });
 });

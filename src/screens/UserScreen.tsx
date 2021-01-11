@@ -7,7 +7,7 @@ interface RouteParams {
   name: string;
 }
 
-class RawUserScreen extends React.PureComponent<
+export class RawUserScreen extends React.PureComponent<
   RouteComponentProps<RouteParams>,
   {}
 > {
