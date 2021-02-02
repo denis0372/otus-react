@@ -24,7 +24,7 @@ export interface Condition  {
 
 export interface Rule {
     cursorPosition: 0;
-    rules: RuleElement[];
+    elements: RuleElement[];
 }
 
 export interface RuleElement {

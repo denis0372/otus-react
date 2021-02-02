@@ -50,25 +50,22 @@
   .editor-block-or{
     background: #5285b1;
   }
-  .editor-block-not{
+  .editor-block-ne{
     background: #d65959;
   }
-  .editor-left-bracket,
-  .editor-right-bracket{
+  .editor-block-left_bracket,
+  .editor-block-right_bracket{
     color: black;
     font-size: 18px;
     background: #dddddd;
   }
-  .editor-block-model{
+  .editor-block-device_model{
     background: #9982b3;
   }
-  .editor-block-type{
+  .editor-block-device_type{
     background: #82b386;
   }
-  .editor-block-exists-type{
-    background: #546b9e;
-  }
-  .editor-block-brand{
+  .editor-block-device_brand{
     background: #b39682;
   }
   .editor-block-schedule{

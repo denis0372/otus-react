@@ -19,7 +19,7 @@ interface RouteParams {
 function getReduxScreenState() { 
   return {
     cursorPosition: store.getState().elementsControl.cursorPosition,
-    rules: store.getState().elementsControl.rules,
+    elements: store.getState().elementsControl.elements,
   }
 }
 
@@ -36,10 +36,10 @@ export class RawConditionsScreen extends React.PureComponent<RouteComponentProps
     this.storeSubscription && this.storeSubscription();
   }
 
-  onRemoveElementClick = (element: RuleElement, index: number) => {
+  onRemoveElementClick = (index: number) => {
     store.dispatch({
       type: actionTypes.REMOVE_ELEMENT,
-      payload: {element, index}
+      payload: {index}
     });
   }
 
@@ -48,6 +48,18 @@ export class RawConditionsScreen extends React.PureComponent<RouteComponentProps
       type: actionTypes.ADD_ELEMENT,
       payload: element
     });
+  }
+
+  onSave = () => {
+    store.dispatch({
+      type: actionTypes.CONDITION_SAVE
+    })
+  }
+
+  onClear = () => {
+    store.dispatch({
+      type: actionTypes.CLEAR
+    })
   }
 
   render() {
@@ -93,6 +105,9 @@ export class RawConditionsScreen extends React.PureComponent<RouteComponentProps
 						<div onClick={() => this.onAddElementClick({type: 'schedule'})}>{RuleElementNames.schedule}</div>
           </li>
 				</ul>
+
+        <button onClick={this.onClear}>очистить</button>
+        <button>сохранить</button>
 
         <pre>{JSON.stringify(store.getState(), null, 2)}</pre> 
       </div>

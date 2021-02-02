@@ -4,7 +4,7 @@ import * as actionTypes from '@/rdx/types';
 
 const defaultState: Rule = {
     cursorPosition: 0,
-    rules: []
+    elements: []
 }
 
 export function conditionsControl(state: Rule = defaultState, action: Action & { payload?: any }): Rule {
@@ -17,7 +17,7 @@ export function conditionsControl(state: Rule = defaultState, action: Action & {
         }
         case actionTypes.CONDITION_SAVE: {
 
-            
+
             return state;
         }
     }

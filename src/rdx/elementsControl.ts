@@ -4,7 +4,7 @@ import * as actionTypes from '@/rdx/types';
 
 const defaultState: Rule = {
     cursorPosition: 0,
-    rules: []
+    elements: []
 }
 
 export function elementsControl(state: Rule = defaultState, action: Action & { payload?: any }): Rule {
@@ -15,7 +15,7 @@ export function elementsControl(state: Rule = defaultState, action: Action & { p
             const element = action.payload;
 
             const newState = JSON.parse(JSON.stringify(state)); 
-            newState.rules.splice(newState.cursorPosition, 0, element);
+            newState.elements.splice(newState.cursorPosition, 0, element);
             newState.cursorPosition = newState.cursorPosition + 1;
 
             return newState;
@@ -24,10 +24,16 @@ export function elementsControl(state: Rule = defaultState, action: Action & { p
 
             const {index} = action.payload;
             const newState = JSON.parse(JSON.stringify(state)); 
-            newState.rules.splice(index, 1);
-            newState.cursorPosition = newState.cursorPosition > newState.rules.length ? newState.rules.length : newState.cursorPosition;
+            newState.elements.splice(index, 1);
+            newState.cursorPosition = newState.cursorPosition > newState.elements.length ? newState.elements.length : newState.cursorPosition;
 
             return newState;
+        }
+        case actionTypes.CLEAR: {
+            return {
+                cursorPosition: 0,
+                elements: []
+            }
         }
     }
 
