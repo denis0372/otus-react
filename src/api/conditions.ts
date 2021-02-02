@@ -1,4 +1,4 @@
-import { Condition } from '@/rdx/reducer'
+import { Condition } from '@/types/conditions'
 
 export const getConditionsList = async <Condition extends Object> () => {
      const condition = await localStorage.getItem("condition");

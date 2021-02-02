@@ -4,6 +4,7 @@ import { LoginScreen } from "@/screens/LoginScreen";
 import { ConditionsScreen } from "@/screens/ConditionsScreen";
 import { NoMatchScreen } from "@/screens/NoMatchScreen";
 import { UserScreen } from "@/screens/UserScreen";
+import "@/styles.css";
 
 export const App: React.FC<{}> = () => (
   <Router>
@@ -24,7 +25,7 @@ export const App: React.FC<{}> = () => (
         <Route path="/login">
           <LoginScreen />
         </Route>
-        <Route path="/conditions" render={() => <ConditionsScreen />} />
+        <Route path="/conditions" component={ConditionsScreen} />
         <Route path="/user/:name" component={UserScreen} />
         <Route path="*">
           <NoMatchScreen />

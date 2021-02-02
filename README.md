@@ -21,15 +21,15 @@ Otus react lessons
 
 {"type":"logic","terms":
 [
-{"type":"element","field":"location","operation":"eq","value":"2"},
-{"type":"logic","terms":
-[
-{"type":"element","field":"device_type","operation":"eq","value":"not_exists"},
-{"type":"element","field":"device_brand","operation":"eq","value":"xiaomi"},
-{"type":"element","field":"device_model","operation":"eq","value":"mi6"}
-],"function":"or"},
-{"type":"element","field":"schedule","operation":"eq","value":"3"},
-{"type":"element","field":"apn","operation":"ne","value":"1"}
+    {"type":"element","field":"location","operation":"eq","value":"2"},
+    {"type":"logic","terms":
+        [
+            {"type":"element","field":"device_type","operation":"eq","value":"not_exists"},
+            {"type":"element","field":"device_brand","operation":"eq","value":"xiaomi"},
+            {"type":"element","field":"device_model","operation":"eq","value":"mi6"}
+        ],"function":"or"},
+    {"type":"element","field":"schedule","operation":"eq","value":"3"},
+    {"type":"element","field":"apn","operation":"ne","value":"1"}
 ],"function":"and"}
 
 Варианты function:

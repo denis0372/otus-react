@@ -74,11 +74,13 @@
   },
   "dependencies": {
     "@types/enzyme": "^3.10.7",
+    "css-loader": "^5.0.1",
     "ramda": "^0.27.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "style-loader": "^2.0.0"
   }
 }
