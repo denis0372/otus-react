@@ -1,17 +1,16 @@
 import React from "react";
 import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
-import { store } from '@/rdx/store';
 import { EditorField } from '@/components/Conditions/components/EditorField'; 
 import { RuleElement, RuleElementNames } from '@/types/conditions'
 import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave } from "@/rdx/actions";
-import { withRedux } from '@/utils/withRedux'; 
-import { Action } from 'redux'; 
+import { bindActionCreators, Dispatch } from 'redux'; 
 import { ConditionState } from '@/rdx/reducer'; 
+import { connect } from "react-redux"; 
 
-(window as any).__store = store;
+// (window as any).__store = store;
 
 
-function getConditionsScreenState(state: ConditionState) { 
+function mapStateToProps(state: ConditionState) { 
   return {
     cursorPosition: state.elementsControl.cursorPosition,
     elements: state.elementsControl.elements,
@@ -21,26 +20,30 @@ function getConditionsScreenState(state: ConditionState) {
 interface RawConditionsScreenProps {
   cursorPosition: 0;
   elements: Array<RuleElement>;
-  dispatch: (action: Action & { payload?: any }) => void; 
+  conditionRemovelement: (index: number) => void;
+  conditionAddElement: (element: RuleElement) => void;
+  conditionSave: () => void;
+  conditionClear: () => void;
 }
 
 export class RawConditionsScreen extends React.Component<RawConditionsScreenProps, {}> {
 
   onRemoveElementClick = (index: number) => {
-    store.dispatch(conditionRemovelement(index));
+    this.props["conditionRemovelement"](index);
   }
 
   onAddElementClick = (element: RuleElement) => {
-    store.dispatch(conditionAddElement(element));
+    this.props["conditionAddElement"](element);
   }
 
   onSave = () => {
-    store.dispatch(conditionSave());
+    this.props["conditionSave"]();
   }
 
   onClear = () => {
-    store.dispatch(conditionClear());
+    this.props["conditionClear"]();
   }
+  
 
   render() {
     return (
@@ -86,8 +89,8 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
           </li>
 				</ul>
 
-        <button onClick={this.onClear}>очистить</button>
-        <button>сохранить</button>
+        <button id="clear_btn" onClick={this.onClear}>очистить</button>
+        <button id="save_btn">сохранить</button>
 
         <pre>{JSON.stringify(this.props, null, 2)}</pre> 
       </div>
@@ -96,5 +99,6 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
   }
 } 
 
+const mapDispatchToProps = { conditionRemovelement, conditionAddElement, conditionSave, conditionClear }; 
 
-export const ConditionsScreen = authorizedOnlyHoc(withRedux(RawConditionsScreen, getConditionsScreenState), "/login");
+export const ConditionsScreen = connect(mapStateToProps, mapDispatchToProps)(authorizedOnlyHoc(RawConditionsScreen, "/login"));

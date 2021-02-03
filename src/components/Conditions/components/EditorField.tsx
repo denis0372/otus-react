@@ -13,7 +13,7 @@ export const EditorField: FC<EditorFieldProp> = ({rule, onDelete}) => (
     <div className="editor-panel">
       {
         rule.elements?.map((element, index) => (
-            <BasicElement element={element} index={index} onDelete={onDelete}/>
+            <BasicElement element={element} index={index} key={index} onDelete={onDelete}/>
           ))
       }
     </div>
