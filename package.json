@@ -75,6 +75,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
     "@types/enzyme": "^3.10.7",
     "@types/react-redux": "^7.1.16",
     "css-loader": "^5.0.1",

@@ -1,26 +1,23 @@
-import { Action } from "redux";
 import { Rule } from '@/types/conditions'
-import * as actionTypes from '@/rdx/actions';
+import * as actions from '@/rdx/actions';
+import { createReducer } from "@reduxjs/toolkit"; 
 
 const defaultState: Rule = {
     cursorPosition: 0,
     elements: []
 }
 
-export function conditionsControl(state: Rule = defaultState, action: Action & { payload?: any }): Rule {
+export const conditionsControl = createReducer<Rule>(defaultState, {
 
-    switch (action.type) {
-        case actionTypes.CONDITION_EDIT: {
-
-
-            return state;
-        }
-        case actionTypes.CONDITION_SAVE: {
+    // if (actions.conditionEdit.match(action)) {
 
 
-            return state;
-        }
+    //     return state;
+    // }
+    
+    [actions.conditionSave.type]: (state, action) => {
+
+
+        return state;
     }
-
-    return state;
-} 
+});

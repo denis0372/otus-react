@@ -1,41 +1,37 @@
-import { Action } from "redux";
 import { Rule } from '@/types/conditions'
-import * as actionTypes from '@/rdx/actions';
+import * as actions from '@/rdx/actions';
+import { createReducer } from "@reduxjs/toolkit"; 
 
 const defaultState: Rule = {
     cursorPosition: 0,
     elements: []
 }
 
-export function elementsControl(state: Rule = defaultState, action: Action & { payload?: any }): Rule {
+export const elementsControl = createReducer<Rule>(defaultState, {
 
-    switch (action.type) {
-        case actionTypes.ADD_ELEMENT: {
+    [actions.conditionAddElement.type]: (state, action) => {
 
-            const element = action.payload;
+        const newState = JSON.parse(JSON.stringify(state)); 
+        newState.elements.splice(newState.cursorPosition, 0, action.payload);
+        newState.cursorPosition = newState.cursorPosition + 1;
 
-            const newState = JSON.parse(JSON.stringify(state)); 
-            newState.elements.splice(newState.cursorPosition, 0, element);
-            newState.cursorPosition = newState.cursorPosition + 1;
+        return newState;
+    },
+    
+    [actions.conditionRemovelement.type]: (state, action) => {
 
-            return newState;
-        }
-        case actionTypes.REMOVE_ELEMENT: {
+        const newState = JSON.parse(JSON.stringify(state)); 
+        newState.elements.splice(action.payload, 1);
+        newState.cursorPosition = newState.cursorPosition > newState.elements.length ? newState.elements.length : newState.cursorPosition;
 
-            const {index} = action.payload;
-            const newState = JSON.parse(JSON.stringify(state)); 
-            newState.elements.splice(index, 1);
-            newState.cursorPosition = newState.cursorPosition > newState.elements.length ? newState.elements.length : newState.cursorPosition;
-
-            return newState;
-        }
-        case actionTypes.CLEAR: {
-            return {
-                cursorPosition: 0,
-                elements: []
-            }
+        return newState;
+    },
+    
+    [actions.conditionClear.type]: (state, action) => {
+        return {
+            cursorPosition: 0,
+            elements: []
         }
     }
 
-    return state;
-} 
+}); 

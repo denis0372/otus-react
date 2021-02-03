@@ -3,7 +3,6 @@ import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
 import { EditorField } from '@/components/Conditions/components/EditorField'; 
 import { RuleElement, RuleElementNames } from '@/types/conditions'
 import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave } from "@/rdx/actions";
-import { bindActionCreators, Dispatch } from 'redux'; 
 import { ConditionState } from '@/rdx/reducer'; 
 import { connect } from "react-redux"; 
 
@@ -17,14 +16,9 @@ function mapStateToProps(state: ConditionState) {
   }
 }
 
-interface RawConditionsScreenProps {
-  cursorPosition: 0;
-  elements: Array<RuleElement>;
-  conditionRemovelement: (index: number) => void;
-  conditionAddElement: (element: RuleElement) => void;
-  conditionSave: () => void;
-  conditionClear: () => void;
-}
+type RawConditionsScreenProps = ReturnType<typeof mapStateToProps> &
+  typeof mapDispatchToProps;
+
 
 export class RawConditionsScreen extends React.Component<RawConditionsScreenProps, {}> {
 

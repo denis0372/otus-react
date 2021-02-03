@@ -23,7 +23,7 @@ export interface Condition  {
 /* Для работы */
 
 export interface Rule {
-    cursorPosition: 0;
+    cursorPosition: number;
     elements: RuleElement[];
 }
 
