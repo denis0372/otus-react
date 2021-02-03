@@ -1,71 +1,51 @@
 import React from "react";
 import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
-import { RouteComponentProps } from "react-router-dom";
 import { store } from '@/rdx/store';
-import * as actionTypes from '@/rdx/types'; 
 import { EditorField } from '@/components/Conditions/components/EditorField'; 
 import { RuleElement, RuleElementNames } from '@/types/conditions'
+import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave } from "@/rdx/actions";
+import { withRedux } from '@/utils/withRedux'; 
+import { Action } from 'redux'; 
+import { ConditionState } from '@/rdx/reducer'; 
 
 (window as any).__store = store;
 
-store.subscribe(() => {
-  console.log('State', store.getState());
-});
 
-interface RouteParams {
-  id: string;
-}
-
-function getReduxScreenState() { 
+function getConditionsScreenState(state: ConditionState) { 
   return {
-    cursorPosition: store.getState().elementsControl.cursorPosition,
-    elements: store.getState().elementsControl.elements,
+    cursorPosition: state.elementsControl.cursorPosition,
+    elements: state.elementsControl.elements,
   }
 }
 
-export class RawConditionsScreen extends React.PureComponent<RouteComponentProps<RouteParams>, {}> {
+interface RawConditionsScreenProps {
+  cursorPosition: 0;
+  elements: Array<RuleElement>;
+  dispatch: (action: Action & { payload?: any }) => void; 
+}
 
-  storeSubscription?: Function;
-  state = getReduxScreenState();
-
-  componentDidMount() {
-    this.storeSubscription = store.subscribe(() => this.setState(getReduxScreenState())); 
-  }
-
-  componentWillUnmount() {
-    this.storeSubscription && this.storeSubscription();
-  }
+export class RawConditionsScreen extends React.Component<RawConditionsScreenProps, {}> {
 
   onRemoveElementClick = (index: number) => {
-    store.dispatch({
-      type: actionTypes.REMOVE_ELEMENT,
-      payload: {index}
-    });
+    store.dispatch(conditionRemovelement(index));
   }
 
   onAddElementClick = (element: RuleElement) => {
-    store.dispatch({
-      type: actionTypes.ADD_ELEMENT,
-      payload: element
-    });
+    store.dispatch(conditionAddElement(element));
   }
 
   onSave = () => {
-    store.dispatch({
-      type: actionTypes.CONDITION_SAVE
-    })
+    store.dispatch(conditionSave());
   }
 
   onClear = () => {
-    store.dispatch({
-      type: actionTypes.CLEAR
-    })
+    store.dispatch(conditionClear());
   }
 
   render() {
     return (
       <div>
-      <EditorField rule={this.state} onDelete={this.onRemoveElementClick} />
+      <EditorField rule={this.props} onDelete={this.onRemoveElementClick} />
       <ul className="editor-add-buttons">
 					<li style={{paddingBlockEnd: 20}}>Добавить: </li>
 					<li>
@@ -109,7 +89,7 @@ export class RawConditionsScreen extends React.PureComponent<RouteComponentProps
         <button onClick={this.onClear}>очистить</button>
         <button>сохранить</button>
 
-        <pre>{JSON.stringify(store.getState(), null, 2)}</pre> 
+        <pre>{JSON.stringify(this.props, null, 2)}</pre> 
       </div>
 
     );
@@ -117,4 +97,4 @@ export class RawConditionsScreen extends React.PureComponent<RouteComponentProps
 } 
 
 
-export const ConditionsScreen = authorizedOnlyHoc(RawConditionsScreen, "/login");
+export const ConditionsScreen = authorizedOnlyHoc(withRedux(RawConditionsScreen, getConditionsScreenState), "/login");

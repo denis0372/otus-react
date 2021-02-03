@@ -1,6 +1,6 @@
 import { Action } from "redux";
 import { Rule } from '@/types/conditions'
-import * as actionTypes from '@/rdx/types';
+import * as actionTypes from '@/rdx/actions';
 
 const defaultState: Rule = {
     cursorPosition: 0,
