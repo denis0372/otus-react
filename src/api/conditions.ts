@@ -1,10 +1,10 @@
-import { Condition } from '@/types/conditions'
+import { Condition, Rule } from '@/types/conditions'
 
-export const getConditionsList = async <Condition extends Object> () => {
-     const condition = await localStorage.getItem("condition");
-     return condition != null ? JSON.parse(condition) : null;
-  };
+export const getCondition = async <Rule extends Object> () => {
+    const condition = await localStorage.getItem("condition");
+    return condition != null ? JSON.parse(condition) : null;
+};
 
-export const saveCondition = async (condition: Condition) => {
+export const saveCondition = async (condition: Rule) => {
     await localStorage.setItem("condition", JSON.stringify(condition));
 };

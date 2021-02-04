@@ -2,7 +2,7 @@ import React from "react";
 import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
 import { EditorField } from '@/components/Conditions/components/EditorField'; 
 import { RuleElement, RuleElementNames } from '@/types/conditions'
-import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave } from "@/rdx/actions";
+import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave, conditionEdit } from "@/rdx/actions";
 import { ConditionState } from '@/rdx/reducer'; 
 import { connect } from "react-redux"; 
 
@@ -84,7 +84,8 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
 				</ul>
 
         <button id="clear_btn" onClick={this.onClear}>очистить</button>
-        <button id="save_btn">сохранить</button>
+        <button id="save_btn" onClick={this.props["conditionEdit"]}>загрузить</button>
+        <button id="save_btn" onClick={this.props["conditionSave"]}>сохранить</button>
 
         <pre>{JSON.stringify(this.props, null, 2)}</pre> 
       </div>
@@ -93,6 +94,6 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
   }
 } 
 
-const mapDispatchToProps = { conditionRemovelement, conditionAddElement, conditionSave, conditionClear }; 
+const mapDispatchToProps = { conditionRemovelement, conditionAddElement, conditionSave, conditionClear, conditionEdit }; 
 
 export const ConditionsScreen = connect(mapStateToProps, mapDispatchToProps)(authorizedOnlyHoc(RawConditionsScreen, "/login"));

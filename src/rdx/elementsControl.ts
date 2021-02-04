@@ -32,6 +32,18 @@ export const elementsControl = createReducer<Rule>(defaultState, {
             cursorPosition: 0,
             elements: []
         }
+    },
+
+    [actions.conditionEdit.type]: (state, action) => {
+        return state;
+    },
+
+    [actions.conditionEditSuccess.type]: (state, action) => {
+        return action.payload;
+    },
+    
+    [actions.conditionSave.type]: (state, action) => {
+        return state;
     }
 
 }); 

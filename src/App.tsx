@@ -7,6 +7,7 @@ import { UserScreen } from "@/screens/UserScreen";
 import { Provider } from "react-redux";
 import { store } from "@/rdx/store";
 import "@/styles.css";
+import { conditionEdit } from "./rdx/actions";
 
 export const App: React.FC<{}> = () => (
   <Provider store={store}>
@@ -17,7 +18,7 @@ export const App: React.FC<{}> = () => (
               <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/conditions">Conditions Editor</Link>
+              <Link to="/conditions" /*onClick={() => store.dispatch(conditionEdit())}*/>Conditions Editor</Link>
             </li>
             <li>
               <Link to="/user/Denis">Denis</Link>
