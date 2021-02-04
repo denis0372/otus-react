@@ -1,6 +1,16 @@
 
 /* conditions */
 
+
+@-webkit-keyframes blink-caret {
+  from, to { background: black; }
+  50% { background: none; }
+}
+@keyframes blink-caret {
+  from, to { background: black; }
+  50% { background: none; }
+}
+
 .editor-block{
     display: inline-block;
     position: relative;
@@ -132,4 +142,8 @@
   }
   .editor-add-buttons div:hover{
     background: #256097;
+  }
+
+  .disabled-empty-text:disabled{
+    color: transparent;
   }

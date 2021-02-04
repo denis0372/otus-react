@@ -27,6 +27,12 @@ export const elementsControl = createReducer<Rule>(defaultState, {
         return newState;
     },
     
+    [actions.conditionCaretControl.type]: (state, action) => {
+
+        state.cursorPosition = action.payload;
+        return state;
+    },
+
     [actions.conditionClear.type]: (state, action) => {
         return {
             cursorPosition: 0,

@@ -5,4 +5,4 @@ export const reducer = combineReducers({
     elementsControl
   }) 
 
-  export type ConditionState = ReturnType<typeof reducer>; 
+export type ConditionState = ReturnType<typeof reducer>; 

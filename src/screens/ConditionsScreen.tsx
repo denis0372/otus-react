@@ -2,7 +2,7 @@ import React from "react";
 import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
 import { EditorField } from '@/components/Conditions/components/EditorField'; 
 import { RuleElement, RuleElementNames } from '@/types/conditions'
-import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave, conditionEdit } from "@/rdx/actions";
+import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave, conditionEdit, conditionCaretControl } from "@/rdx/actions";
 import { ConditionState } from '@/rdx/reducer'; 
 import { connect } from "react-redux"; 
 
@@ -29,20 +29,12 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
   onAddElementClick = (element: RuleElement) => {
     this.props["conditionAddElement"](element);
   }
-
-  onSave = () => {
-    this.props["conditionSave"]();
-  }
-
-  onClear = () => {
-    this.props["conditionClear"]();
-  }
   
 
   render() {
     return (
       <div>
-      <EditorField rule={this.props} onDelete={this.onRemoveElementClick} />
+      <EditorField rule={this.props} onDelete={this.onRemoveElementClick} onCaretChange={this.props["conditionCaretControl"]}/>
       <ul className="editor-add-buttons">
 					<li style={{paddingBlockEnd: 20}}>Добавить: </li>
 					<li>
@@ -83,7 +75,7 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
           </li>
 				</ul>
 
-        <button id="clear_btn" onClick={this.onClear}>очистить</button>
+        <button id="clear_btn" onClick={this.props["conditionClear"]}>очистить</button>
         <button id="save_btn" onClick={this.props["conditionEdit"]}>загрузить</button>
         <button id="save_btn" onClick={this.props["conditionSave"]}>сохранить</button>
 
@@ -94,6 +86,6 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
   }
 } 
 
-const mapDispatchToProps = { conditionRemovelement, conditionAddElement, conditionSave, conditionClear, conditionEdit }; 
+const mapDispatchToProps = { conditionRemovelement, conditionAddElement, conditionSave, conditionClear, conditionEdit, conditionCaretControl }; 
 
 export const ConditionsScreen = connect(mapStateToProps, mapDispatchToProps)(authorizedOnlyHoc(RawConditionsScreen, "/login"));
