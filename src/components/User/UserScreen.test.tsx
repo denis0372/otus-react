@@ -1,11 +1,12 @@
 import React from "react";
 
-import { RawUserScreen } from "./UserScreen";
+import { UserComponent } from "./UserScreen";
 import { shallow } from "enzyme";
 import { logout } from "@/api/auth";
 
 import { createMemoryHistory, createLocation } from 'history';
 import { match } from 'react-router'
+import { actions } from "@/rdx/login";
 
 const path = `/user/:name`;
 const history = createMemoryHistory();
@@ -25,9 +26,12 @@ jest.mock("@/api/auth", () => ({
   logout: jest.fn(),
 }));
 
-describe("UserScreen", () => {
+describe("UserComponent", () => {
+
   it("logout action", async () => {
-    const screen = shallow(<RawUserScreen history={history} location={location} match={matchObj}/>);
+    jest.spyOn(actions, "login"); 
+
+    const screen = shallow(<UserComponent username="Denis" logout={actions.logout}/>);
 
     const btn = screen.find("button");
     await btn.simulate("click");

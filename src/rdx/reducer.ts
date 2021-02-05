@@ -1,8 +1,11 @@
-import { elementsControl } from './elementsControl'
+import { conditionsControl } from './conditionsControl'
 import { combineReducers } from 'redux'; 
+import { loginSlice } from './login'
 
 export const reducer = combineReducers({
-    elementsControl
+  conditionsControl,
+  login: loginSlice.reducer, 
   }) 
 
-export type ConditionState = ReturnType<typeof reducer>; 
+  
+export type AppState = ReturnType<typeof reducer>; 

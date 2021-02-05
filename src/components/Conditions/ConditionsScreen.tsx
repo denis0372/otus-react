@@ -3,18 +3,27 @@ import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
 import { EditorField } from '@/components/Conditions/components/EditorField'; 
 import { RuleElement, RuleElementNames } from '@/types/conditions'
 import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave, conditionEdit, conditionCaretControl } from "@/rdx/actions";
-import { ConditionState } from '@/rdx/reducer'; 
+import { AppState } from '@/rdx/reducer'; 
 import { connect } from "react-redux"; 
 
 // (window as any).__store = store;
 
 
-function mapStateToProps(state: ConditionState) { 
+function mapStateToProps(state: AppState) { 
   return {
-    cursorPosition: state.elementsControl.cursorPosition,
-    elements: state.elementsControl.elements,
+    cursorPosition: state.conditionsControl.cursorPosition,
+    elements: state.conditionsControl.elements,
   }
 }
+
+const mapDispatchToProps = { 
+  conditionRemovelement, 
+  conditionAddElement, 
+  conditionSave, 
+  conditionClear, 
+  conditionEdit, 
+  conditionCaretControl 
+}; 
 
 type RawConditionsScreenProps = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
@@ -86,6 +95,4 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
   }
 } 
 
-const mapDispatchToProps = { conditionRemovelement, conditionAddElement, conditionSave, conditionClear, conditionEdit, conditionCaretControl }; 
-
-export const ConditionsScreen = connect(mapStateToProps, mapDispatchToProps)(authorizedOnlyHoc(RawConditionsScreen, "/login"));
+export const ConditionsScreen = connect(mapStateToProps, mapDispatchToProps)(RawConditionsScreen);

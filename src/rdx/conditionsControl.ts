@@ -7,7 +7,7 @@ const defaultState: Rule = {
     elements: []
 }
 
-export const elementsControl = createReducer<Rule>(defaultState, {
+export const conditionsControl = createReducer<Rule>(defaultState, {
 
     [actions.conditionAddElement.type]: (state, action) => {
 

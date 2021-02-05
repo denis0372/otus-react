@@ -1,4 +1,4 @@
-import { elementsControl } from "./elementsControl";
+import { conditionsControl } from "./conditionsControl";
 import { conditionAddElement, conditionClear, conditionRemovelement } from "./actions";
 import { Rule, RuleElement } from "types/conditions";
 
@@ -47,19 +47,19 @@ describe("elementsControl reducer test", () => {
     describe("reducers", () => {
 
         it("elementsControl -> conditionAddElement", () => {
-            const state = elementsControl(rule, conditionAddElement(ruleElemet));
+            const state = conditionsControl(rule, conditionAddElement(ruleElemet));
             expect(state.cursorPosition).toEqual(rule.cursorPosition + 1);
             expect(state.elements.length).toEqual(rule.elements.length + 1);
         });
 
         it("elementsControl -> conditionClear", () => {
-            const state = elementsControl(rule, conditionClear());
+            const state = conditionsControl(rule, conditionClear());
             expect(state.cursorPosition).toEqual(0);
             expect(state.elements.length).toEqual(0);
         });
 
         it("elementsControl -> conditionClear", () => {
-            const state = elementsControl(rule, conditionRemovelement(0));
+            const state = conditionsControl(rule, conditionRemovelement(0));
             expect(state.cursorPosition).toEqual(rule.cursorPosition);
             expect(state.elements.length).toEqual(rule.elements.length - 1);
         });
