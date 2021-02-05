@@ -1,6 +1,6 @@
 import React from "react";
 import { EditorField } from './components/EditorField'; 
-import { RuleElement, RuleElementNames } from './types'
+import { Rule, RuleElement, RuleElementNames } from './types'
 import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave, conditionEdit, conditionCaretControl } from "./actions";
 import { AppState } from '@/rdx/reducer'; 
 import { connect } from "react-redux"; 
@@ -38,7 +38,6 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
     this.props["conditionAddElement"](element);
   }
   
-
   render() {
     return (
       <div>
@@ -85,7 +84,7 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
 
         <button id="clear_btn" onClick={this.props["conditionClear"]}>очистить</button>
         <button id="save_btn" onClick={this.props["conditionEdit"]}>загрузить</button>
-        <button id="save_btn" onClick={this.props["conditionSave"]}>сохранить</button>
+        <button id="save_btn" onClick={() => this.props["conditionSave"](this.props)}>сохранить</button>
 
         <pre>{JSON.stringify(this.props, null, 2)}</pre> 
       </div>

@@ -8,5 +8,5 @@ export const conditionClear = createAction("conditionClear");
 
 export const conditionEdit = createAction("conditionEdit"); 
 export const conditionEditSuccess = createAction<Rule>("conditionEditSuccess");
-export const conditionSave = createAction("conditionSave"); 
+export const conditionSave = createAction<Rule>("conditionSave"); 
 
