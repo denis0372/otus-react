@@ -1,6 +1,6 @@
 import { conditionsControl } from "./conditionsControl";
 import { conditionAddElement, conditionClear, conditionRemovelement } from "./actions";
-import { Rule, RuleElement } from "types/conditions";
+import { Rule, RuleElement } from "components/Conditions/types";
 
 
 describe("elementsControl reducer test", () => {

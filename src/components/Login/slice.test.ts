@@ -1,4 +1,4 @@
-import { loginSlice, initialState } from "./login";
+import { loginSlice, initialState } from "./slice";
 
 describe("Login reducer", () => {
   it("Attempt login with empty name", () => {

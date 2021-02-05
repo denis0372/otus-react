@@ -1,8 +1,7 @@
 import React from "react";
-import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
-import { EditorField } from '@/components/Conditions/components/EditorField'; 
-import { RuleElement, RuleElementNames } from '@/types/conditions'
-import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave, conditionEdit, conditionCaretControl } from "@/rdx/actions";
+import { EditorField } from './components/EditorField'; 
+import { RuleElement, RuleElementNames } from './types'
+import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave, conditionEdit, conditionCaretControl } from "./actions";
 import { AppState } from '@/rdx/reducer'; 
 import { connect } from "react-redux"; 
 

@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import { Rule, RuleElement } from '@/types/conditions'
+import { Rule, RuleElement } from '../types'
 import { BasicElement} from './BasicElement'
 import { CaretElement } from './CaretElement'
 

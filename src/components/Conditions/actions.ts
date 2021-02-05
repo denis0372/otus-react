@@ -1,4 +1,4 @@
-import { Rule, RuleElement } from "types/conditions";
+import { Rule, RuleElement } from "components/Conditions/types";
 import { createAction } from "@reduxjs/toolkit"; 
 
 export const conditionAddElement = createAction<RuleElement>("conditionAddElement"); 

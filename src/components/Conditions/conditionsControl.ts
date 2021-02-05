@@ -1,5 +1,5 @@
-import { Rule } from '@/types/conditions'
-import * as actions from '@/rdx/actions';
+import { Rule } from './types'
+import * as actions from './actions';
 import { createReducer } from "@reduxjs/toolkit"; 
 
 const defaultState: Rule = {

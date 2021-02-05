@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom"; 
 import { AppState } from '@/rdx/reducer'; 
 import { isEmpty } from "ramda"; 
-import { loginSlice } from "@/rdx/login";
+import { actions } from "@/components/Login/slice";
 
 const mapStateToProps = ({ login }: AppState) => ({
   ...login,
 });
 
 const mapDispatchToProps = {
-  logout: loginSlice.actions.logout,
+  logout: actions.logout,
 };
 
 export type Props = ReturnType<typeof mapStateToProps> &
@@ -26,7 +26,7 @@ export class UserComponent extends PureComponent<Props> {
         </h3>
       ) : (
       <div>
-        <h1>Hello, {username}!</h1>
+        <h1>User: {username}</h1>
         <button onClick={this.props.logout}>Logout</button>
       </div>
     );

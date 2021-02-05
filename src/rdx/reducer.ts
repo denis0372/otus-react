@@ -1,6 +1,6 @@
-import { conditionsControl } from './conditionsControl'
+import { conditionsControl } from '../components/Conditions/conditionsControl'
 import { combineReducers } from 'redux'; 
-import { loginSlice } from './login'
+import { loginSlice } from '@/components/Login/slice'
 
 export const reducer = combineReducers({
   conditionsControl,

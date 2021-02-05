@@ -1,12 +1,12 @@
 import React from "react";
 
-import { UserComponent } from "./UserScreen";
+import { UserComponent } from "./UserComponent";
 import { shallow } from "enzyme";
 import { logout } from "@/api/auth";
 
 import { createMemoryHistory, createLocation } from 'history';
 import { match } from 'react-router'
-import { actions } from "@/rdx/login";
+import { actions } from "@/components/Login/slice";
 
 const path = `/user/:name`;
 const history = createMemoryHistory();

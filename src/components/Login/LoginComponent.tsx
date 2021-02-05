@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { AppState } from '@/rdx/reducer'; 
-import { actions } from "@/rdx/login";
+import { actions } from "./slice";
 import { connect } from "react-redux";
 import { isEmpty } from "ramda"; 
 import { Redirect } from "react-router-dom";
@@ -25,7 +25,9 @@ export const LoginComponent: React.FC<Props> = ({ username, login }) => {
   const onSubmit = useCallback(
     async (ev) => {
       ev.preventDefault();
-      login(name); 
+      if (!isEmpty(name)) {
+        login(name);
+      } 
     },
     [name, login]
   );
@@ -35,7 +37,7 @@ export const LoginComponent: React.FC<Props> = ({ username, login }) => {
       <label>
         Name:
         <input
-          placeholder="Enter your name"
+          placeholder="Введите ваше имя"
           value={name}
           onChange={(ev) => setName((ev.target as HTMLInputElement).value)}
         />

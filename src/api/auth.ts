@@ -13,7 +13,12 @@ export const logout = async () => {
 };
 
 export const isLoggedIn = async () => {
-  await sleep(2000);
-  const login = await localStorage.getItem("login");
+  const login = await getUserSession(); 
   return Boolean(login);
 };
+
+export const getUserSession = async () => {
+  await sleep(2000);
+  const login = await localStorage.getItem("login");
+  return login;
+}

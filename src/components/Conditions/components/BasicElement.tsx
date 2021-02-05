@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import { RuleElement, RuleElementNames } from '@/types/conditions'
+import { RuleElement, RuleElementNames } from '../types'
 
 interface Prop {
   element: RuleElement;

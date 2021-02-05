@@ -1,26 +1,4 @@
-/* Для хранения */
-
-export type ConditionType = 'logic' | 'element';
-export type ConditionFunction = 'and' | 'or';
-export type ConditionOperation = 'eq' | 'ne';
-export type ConditionField = 'device_brand' | 'device_model' | 'location' | 'device_type' | 'apn' | 'rat' | 'schedule';
-
-
-export interface ConditionElement {
-    type: ConditionType;
-    function?: ConditionFunction;
-    operation?: ConditionOperation;
-    field?: ConditionField;
-    terms?: ConditionElement[];
-    value?: string;
-}
-
-export interface Condition  {
-    rule: (ConditionElement | null);
-}
-
-
-/* Для работы */
+/* Типы для работы */
 
 export interface Rule {
     cursorPosition: number;
