@@ -2,6 +2,7 @@ import { Rule } from './types'
 import * as actions from './actions';
 import { createReducer } from "@reduxjs/toolkit"; 
 
+
 const defaultState: Rule = {
     cursorPosition: 0,
     elements: []
@@ -50,6 +51,6 @@ export const conditionsControl = createReducer<Rule>(defaultState, {
     
     [actions.conditionSave.type]: (state, action) => {
         return state;
-    }
+    },
 
 }); 

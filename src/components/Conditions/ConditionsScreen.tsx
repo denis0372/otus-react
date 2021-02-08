@@ -4,6 +4,7 @@ import { Rule, RuleElement, RuleElementNames } from './types'
 import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave, conditionEdit, conditionCaretControl } from "./actions";
 import { AppState } from '@/rdx/reducer'; 
 import { connect } from "react-redux"; 
+import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
 
 // (window as any).__store = store;
 
@@ -93,4 +94,4 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
   }
 } 
 
-export const ConditionsScreen = connect(mapStateToProps, mapDispatchToProps)(RawConditionsScreen);
+export const ConditionsScreen = connect(mapStateToProps, mapDispatchToProps)(authorizedOnlyHoc(RawConditionsScreen, "/login"));
