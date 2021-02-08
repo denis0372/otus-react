@@ -1,28 +1,26 @@
 import React from "react";
 import { EditorField } from './components/EditorField'; 
 import { Rule, RuleElement, RuleElementNames } from './types'
-import { conditionAddElement, conditionClear, conditionRemovelement, conditionSave, conditionEdit, conditionCaretControl } from "./actions";
+import { actions } from "./slice";
 import { AppState } from '@/rdx/reducer'; 
 import { connect } from "react-redux"; 
 import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
 
-// (window as any).__store = store;
-
 
 function mapStateToProps(state: AppState) { 
   return {
-    cursorPosition: state.conditionsControl.cursorPosition,
-    elements: state.conditionsControl.elements,
+    cursorPosition: state.conditions.cursorPosition,
+    elements: state.conditions.elements,
   }
 }
 
 const mapDispatchToProps = { 
-  conditionRemovelement, 
-  conditionAddElement, 
-  conditionSave, 
-  conditionClear, 
-  conditionEdit, 
-  conditionCaretControl 
+  conditionRemovElement: actions.conditionRemovElement, 
+  conditionAddElement: actions.conditionAddElement, 
+  conditionSave: actions.conditionSave, 
+  conditionClear: actions.conditionClear, 
+  conditionEdit: actions.conditionEdit, 
+  conditionCaretControl: actions. conditionCaretControl
 }; 
 
 type RawConditionsScreenProps = ReturnType<typeof mapStateToProps> &
@@ -32,7 +30,7 @@ type RawConditionsScreenProps = ReturnType<typeof mapStateToProps> &
 export class RawConditionsScreen extends React.Component<RawConditionsScreenProps, {}> {
 
   onRemoveElementClick = (index: number) => {
-    this.props["conditionRemovelement"](index);
+    this.props["conditionRemovElement"](index);
   }
 
   onAddElementClick = (element: RuleElement) => {
@@ -84,7 +82,7 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
 				</ul>
 
         <button id="clear_btn" onClick={this.props["conditionClear"]}>очистить</button>
-        <button id="save_btn" onClick={this.props["conditionEdit"]}>загрузить</button>
+        <button id="edit_btn" onClick={this.props["conditionEdit"]}>загрузить</button>
         <button id="save_btn" onClick={() => this.props["conditionSave"](this.props)}>сохранить</button>
 
         <pre>{JSON.stringify(this.props, null, 2)}</pre> 

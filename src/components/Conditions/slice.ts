@@ -1,0 +1,50 @@
+import { Rule, RuleElement } from './types'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+
+const initialState: Rule = {
+    cursorPosition: 0,
+    elements: []
+}
+
+export const conditionsSlice = createSlice({
+    name: "conditions",
+    initialState,
+    reducers: {
+
+        conditionAddElement (state, action: PayloadAction<RuleElement>) {
+            state.elements.splice(state.cursorPosition, 0, action.payload);
+            state.cursorPosition = state.cursorPosition + 1;
+        },
+    
+        conditionRemovElement (state, action: PayloadAction<number>) {
+            state.elements.splice(action.payload, 1);
+            state.cursorPosition = state.cursorPosition > state.elements.length ? state.elements.length : state.cursorPosition;
+        },
+    
+        conditionCaretControl (state, action: PayloadAction<number>) {
+            state.cursorPosition = action.payload;
+        },
+
+        conditionClear (state) {
+            state.cursorPosition = 0;
+            state.elements = [];
+        },
+
+        conditionEdit () {
+        },
+
+        conditionEditSuccess (state, action: PayloadAction<Rule>) {
+            state.cursorPosition = action.payload.cursorPosition;
+            state.elements = action.payload.elements;
+        },
+    
+        conditionSave (state, action: PayloadAction<Rule>) {
+        },
+
+        conditionEditorInit() {
+        },
+    }
+}); 
+
+export const { reducer, actions } = conditionsSlice; 

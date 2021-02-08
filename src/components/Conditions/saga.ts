@@ -1,6 +1,6 @@
 import { getCondition, saveCondition } from "@/api/conditions";
 import { takeEvery, call, put, fork } from "redux-saga/effects";
-import * as actions from './actions';
+import { actions } from './slice';
 
 export function* conditionsSaga() {
     yield takeEvery(actions.conditionEdit.type, conditionEdit);

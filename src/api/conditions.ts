@@ -1,4 +1,4 @@
-import { Rule } from 'components/Conditions/types'
+import { Rule } from '@/components/Conditions/types'
 
 export const getCondition = async <Rule extends Object> () => {
     const condition = await localStorage.getItem("condition");
