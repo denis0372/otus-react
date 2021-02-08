@@ -83,7 +83,7 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
 
         <button id="clear_btn" onClick={this.props["conditionClear"]}>очистить</button>
         <button id="edit_btn" onClick={this.props["conditionEdit"]}>загрузить</button>
-        <button id="save_btn" onClick={() => this.props["conditionSave"](this.props)}>сохранить</button>
+        <button id="save_btn" onClick={() => this.props["conditionSave"]({cursorPosition: this.props.cursorPosition, elements: this.props.elements})}>сохранить</button>
 
         <pre>{JSON.stringify(this.props, null, 2)}</pre> 
       </div>

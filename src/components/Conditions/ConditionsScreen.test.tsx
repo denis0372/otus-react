@@ -17,10 +17,12 @@ describe("ConditionsScreen", () => {
       ],
     }});
 
+
     jest.spyOn(store, "dispatch");
   });
 
   it("should generate action conditionAddElement on click add_btn_and", () => {
+
     const wrapper = mount(
       <Provider store={store}>
         <ConditionsScreen />
@@ -41,19 +43,28 @@ describe("ConditionsScreen", () => {
     `);
   });
 
-  it("should generate action conditionClear on click clear_btn", () => {
+  it("should generate action conditionSave on click save_btn", () => {
+    
     const wrapper = mount(
       <Provider store={store}>
         <ConditionsScreen />
       </Provider>
     );
 
-    wrapper.find("#clear_btn").simulate("click");
+    wrapper.find("#save_btn").simulate("click");
 
     expect(store.getActions()).toMatchInlineSnapshot(`
       Array [
         Object {
-          "type": "conditions/conditionClear",
+          "payload": Object {
+            "cursorPosition": 1,
+            "elements": Array [
+              Object {
+                "type": "and",
+              },
+            ],
+          },
+          "type": "conditions/conditionSave",
         },
       ]
     `);
