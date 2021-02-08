@@ -44,13 +44,13 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
       <ul className="editor-add-buttons">
 					<li style={{paddingBlockEnd: 20}}>Добавить: </li>
 					<li>
-						<div onClick={() => this.onAddElementClick({type: 'and'})} className="editor-block-and">{RuleElementNames.and}</div>
+						<div id="add_btn_and" onClick={() => this.onAddElementClick({type: 'and'})} className="editor-block-and">{RuleElementNames.and}</div>
           </li>
 					<li>
-						<div onClick={() => this.onAddElementClick({type: 'or'})} className="editor-block-or">{RuleElementNames.or}</div>
+						<div id="add_btn_or" onClick={() => this.onAddElementClick({type: 'or'})} className="editor-block-or">{RuleElementNames.or}</div>
           </li>
 					<li>
-						<div onClick={() => this.onAddElementClick({type: 'ne'})} className="editor-block-not">{RuleElementNames.ne}</div>
+						<div id="add_btn_ne" onClick={() => this.onAddElementClick({type: 'ne'})} className="editor-block-not">{RuleElementNames.ne}</div>
           </li>
 					<li>
             <div onClick={() => this.onAddElementClick({type: 'left_bracket'})} className="editor-left-bracket">{RuleElementNames.left_bracket}</div>
@@ -92,4 +92,4 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
   }
 } 
 
-export const ConditionsScreen = connect(mapStateToProps, mapDispatchToProps)(authorizedOnlyHoc(RawConditionsScreen, "/login"));
+export const ConditionsScreen = connect(mapStateToProps, mapDispatchToProps)(RawConditionsScreen);
