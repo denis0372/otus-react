@@ -1,55 +1,54 @@
-import { Rule } from '@/types/conditions'
-import * as actions from '@/rdx/actions';
-import { createReducer } from "@reduxjs/toolkit"; 
+import { Rule } from "@/types/conditions";
+import * as actions from "@/rdx/actions";
+import { createReducer } from "@reduxjs/toolkit";
 
 const defaultState: Rule = {
-    cursorPosition: 0,
-    elements: []
-}
+  cursorPosition: 0,
+  elements: [],
+};
 
-export const elementsControl = createReducer<Rule>(defaultState, {
+export const elementsControl = createReducer<Rule>(defaultState, (builder) => {
+  builder
+    .addCase(actions.conditionAddElement, (state, action) => {
+      state.elements.splice(state.cursorPosition, 0, action.payload);
+      state.cursorPosition = state.cursorPosition + 1;
+      return state;
+    })
 
-    [actions.conditionAddElement.type]: (state, action) => {
+    .addCase(actions.conditionRemovelement, (state, action) => {
+      state.elements.splice(action.payload, 1);
+      state.cursorPosition =
+        state.cursorPosition > state.elements.length
+          ? state.elements.length
+          : state.cursorPosition;
+      return state;
+    })
 
-        const newState = JSON.parse(JSON.stringify(state)); 
-        newState.elements.splice(newState.cursorPosition, 0, action.payload);
-        newState.cursorPosition = newState.cursorPosition + 1;
+    .addCase(actions.conditionCaretControl, (state, action) => {
+      state.cursorPosition = action.payload;
+      return state;
+    })
 
-        return newState;
-    },
-    
-    [actions.conditionRemovelement.type]: (state, action) => {
+    .addCase(actions.conditionClear, (state, action) => {
+      return {
+        cursorPosition: 0,
+        elements: [],
+      };
+    })
 
-        const newState = JSON.parse(JSON.stringify(state)); 
-        newState.elements.splice(action.payload, 1);
-        newState.cursorPosition = newState.cursorPosition > newState.elements.length ? newState.elements.length : newState.cursorPosition;
+    .addCase(actions.conditionEdit, (state, action) => {
+      return state;
+    })
 
-        return newState;
-    },
-    
-    [actions.conditionCaretControl.type]: (state, action) => {
+    .addCase(actions.conditionEditSuccess, (state, action) => {
+      return action.payload;
+    })
 
-        state.cursorPosition = action.payload;
-        return state;
-    },
+    .addCase(actions.conditionSave, (state, action) => {
+      return state;
+    })
 
-    [actions.conditionClear.type]: (state, action) => {
-        return {
-            cursorPosition: 0,
-            elements: []
-        }
-    },
-
-    [actions.conditionEdit.type]: (state, action) => {
-        return state;
-    },
-
-    [actions.conditionEditSuccess.type]: (state, action) => {
-        return action.payload;
-    },
-    
-    [actions.conditionSave.type]: (state, action) => {
-        return state;
-    }
-
-}); 
+    .addCase(actions.conditionEditorInit, (state, action) => {
+      return state;
+    });
+});

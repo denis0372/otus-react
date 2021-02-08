@@ -1,8 +1,8 @@
-import { elementsControl } from './elementsControl'
-import { combineReducers } from 'redux'; 
+import { elementsControl } from "./elementsControl";
+import { combineReducers } from "redux";
 
 export const reducer = combineReducers({
-    elementsControl
-  }) 
+  elementsControl,
+});
 
-export type ConditionState = ReturnType<typeof reducer>; 
+export type ConditionState = ReturnType<typeof reducer>;

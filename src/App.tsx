@@ -7,34 +7,39 @@ import { UserScreen } from "@/screens/UserScreen";
 import { Provider } from "react-redux";
 import { store } from "@/rdx/store";
 import "@/styles.css";
-import { conditionEdit } from "./rdx/actions";
+import { conditionEditorInit } from "@/rdx/actions";
 
 export const App: React.FC<{}> = () => (
   <Provider store={store}>
     <Router>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/conditions" /*onClick={() => store.dispatch(conditionEdit())}*/>Conditions Editor</Link>
-            </li>
-            <li>
-              <Link to="/user/Denis">Denis</Link>
-            </li>
-          </ul>
-        </nav>
-        <Switch>
-          <Route path="/login">
-            <LoginScreen />
-          </Route>
-          <Route path="/conditions" component={ConditionsScreen} />
-          <Route path="/user/:name" component={UserScreen} />
-          <Route path="*">
-            <NoMatchScreen />
-          </Route>
-        </Switch>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link
+              to="/conditions"
+              onClick={() => store.dispatch(conditionEditorInit())}
+            >
+              Conditions Editor
+            </Link>
+          </li>
+          <li>
+            <Link to="/user/Denis">Denis</Link>
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path="/login">
+          <LoginScreen />
+        </Route>
+        <Route path="/conditions" component={ConditionsScreen} />
+        <Route path="/user/:name" component={UserScreen} />
+        <Route path="*">
+          <NoMatchScreen />
+        </Route>
+      </Switch>
     </Router>
   </Provider>
 );

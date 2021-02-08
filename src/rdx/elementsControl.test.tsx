@@ -26,42 +26,41 @@ describe("elementsControl reducer test", () => {
         type: "schedule"
     };
 
-    describe("actions check", () => {
-        it("conditionAddElement", () => {
-            const expectedAction = {
-                type: conditionAddElement.type,
-                payload: ruleElemet,
-            };
-            expect(conditionAddElement(ruleElemet)).toEqual(expectedAction);
-        });
-
-        it("conditionAddElement", () => {
-            const expectedAction = {
-                type: conditionRemovelement.type,
-                payload: 1,
-            };
-            expect(conditionRemovelement(1)).toEqual(expectedAction);
-        });
+  describe("actions check", () => {
+    it("conditionAddElement action", () => {
+      const expectedAction = {
+        type: conditionAddElement.type,
+        payload: ruleElemet,
+      };
+      expect(conditionAddElement(ruleElemet)).toEqual(expectedAction);
     });
 
-    describe("reducers", () => {
-
-        it("elementsControl -> conditionAddElement", () => {
-            const state = elementsControl(rule, conditionAddElement(ruleElemet));
-            expect(state.cursorPosition).toEqual(rule.cursorPosition + 1);
-            expect(state.elements.length).toEqual(rule.elements.length + 1);
-        });
-
-        it("elementsControl -> conditionClear", () => {
-            const state = elementsControl(rule, conditionClear());
-            expect(state.cursorPosition).toEqual(0);
-            expect(state.elements.length).toEqual(0);
-        });
-
-        it("elementsControl -> conditionClear", () => {
-            const state = elementsControl(rule, conditionRemovelement(0));
-            expect(state.cursorPosition).toEqual(rule.cursorPosition);
-            expect(state.elements.length).toEqual(rule.elements.length - 1);
-        });
+    it("conditionAddElement action", () => {
+      const expectedAction = {
+        type: conditionRemovelement.type,
+        payload: 1,
+      };
+      expect(conditionRemovelement(1)).toEqual(expectedAction);
     });
+  });
+
+  describe("reducers", () => {
+    it("condition add new element", () => {
+      const state = elementsControl(rule, conditionAddElement(ruleElemet));
+      expect(state.cursorPosition).toEqual(rule.cursorPosition + 1);
+      expect(state.elements.length).toEqual(rule.elements.length + 1);
+    });
+
+    it("condition clear", () => {
+      const state = elementsControl(rule, conditionClear());
+      expect(state.cursorPosition).toEqual(0);
+      expect(state.elements.length).toEqual(0);
+    });
+
+    it("condition remove element", () => {
+      const state = elementsControl(rule, conditionRemovelement(0));
+      expect(state.cursorPosition).toEqual(rule.cursorPosition);
+      expect(state.elements.length).toEqual(rule.elements.length - 1);
+    });
+  });
 });
