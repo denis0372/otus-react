@@ -10,6 +10,6 @@ interface Prop {
 
 export const ComboBoxElement: FC<Prop> = ({element, index, onDelete, onChange}) => 
   <div className={`editor-block editor-block-${element.type}`}>{RuleElementNames[element.type]}
-    <select value={element.value || ''} onChange={(event) => {onChange(index, event.target.value);}}/>
+    <select style={{marginInlineStart: 20}} value={element.value || ''} onChange={(event) => {onChange(index, event.target.value);}}/>
   </div>
 ;

@@ -10,6 +10,6 @@ interface Prop {
 
 export const InputTextElement: FC<Prop> = ({element, index, onDelete, onChange}) => 
   <div className={`editor-block editor-block-${element.type}`}>{RuleElementNames[element.type]}
-    <input type="text" value={element.value || ''} onChange={(event) => {onChange(index, event.target.value);}}/>
+    <input type="text" style={{marginInlineStart: 20}} value={element.value || ''} onChange={(event) => {onChange(index, event.target.value);}}/>
   </div>
 ;

@@ -75,6 +75,9 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/enzyme": "^3.10.7",
     "@types/react-redux": "^7.1.16",
