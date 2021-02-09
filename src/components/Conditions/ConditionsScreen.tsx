@@ -17,6 +17,7 @@ function mapStateToProps(state: AppState) {
 const mapDispatchToProps = { 
   conditionRemovElement: actions.conditionRemovElement, 
   conditionAddElement: actions.conditionAddElement, 
+  conditionChangeElement: actions.conditionChangeElement, 
   conditionSave: actions.conditionSave, 
   conditionClear: actions.conditionClear, 
   conditionEdit: actions.conditionEdit, 
@@ -36,11 +37,15 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
   onAddElementClick = (element: RuleElement) => {
     this.props["conditionAddElement"](element);
   }
+
+  onElementChange = (index: number, value: string) => {
+    this.props["conditionChangeElement"]({index, value});
+  }
   
   render() {
     return (
       <div>
-      <EditorField rule={this.props} onDelete={this.onRemoveElementClick} onCaretChange={this.props["conditionCaretControl"]}/>
+      <EditorField rule={this.props} onDelete={this.onRemoveElementClick} onCaretChange={this.props["conditionCaretControl"]} onElementChange={this.onElementChange}/>
       <ul className="editor-add-buttons">
 					<li style={{paddingBlockEnd: 20}}>Добавить: </li>
 					<li>

@@ -1,4 +1,4 @@
-import { Rule, RuleElement } from './types'
+import { ElementChangeEvent, Rule, RuleElement } from './types'
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
@@ -6,6 +6,7 @@ const initialState: Rule = {
     cursorPosition: 0,
     elements: []
 }
+
 
 export const conditionsSlice = createSlice({
     name: "conditions",
@@ -22,6 +23,10 @@ export const conditionsSlice = createSlice({
             state.cursorPosition = state.cursorPosition > state.elements.length ? state.elements.length : state.cursorPosition;
         },
     
+        conditionChangeElement (state, action: PayloadAction<ElementChangeEvent>) {
+            state.elements[action.payload.index].value = action.payload.value;
+        },
+
         conditionCaretControl (state, action: PayloadAction<number>) {
             state.cursorPosition = action.payload;
         },

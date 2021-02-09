@@ -10,6 +10,11 @@ export interface RuleElement {
     value?: string;
 }
 
+export interface ElementChangeEvent {
+    index: number;
+    value: string;
+}
+
 export type RuleElementType = 'and' | 'or' | 'ne' | 'right_bracket' | 'left_bracket' | 'device_brand' | 'device_model' | 'location' | 'device_type' | 'apn' | 'rat' | 'schedule'
 
 export const RuleElementNames = {
