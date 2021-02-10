@@ -36,6 +36,10 @@ describe("ConditionsScreen", () => {
     expect(store.getActions()).toMatchInlineSnapshot(`
       Array [
         Object {
+          "payload": undefined,
+          "type": "conditions/conditionEditorInit",
+        },
+        Object {
           "payload": Object {
             "type": "and",
           },
@@ -57,6 +61,10 @@ describe("ConditionsScreen", () => {
 
     expect(store.getActions()).toMatchInlineSnapshot(`
       Array [
+        Object {
+          "payload": undefined,
+          "type": "conditions/conditionEditorInit",
+        },
         Object {
           "payload": Object {
             "cursorPosition": 1,
