@@ -19,6 +19,6 @@ export const ComboBoxElementStory: React.FC<{}> = () => {
   const index = number("Index", 0);
 
   return (
-    <ComboBoxElement index={index} element={value} onChange={action("change")} onDelete={action("delete")}/>
+    <ComboBoxElement index={index} element={value} onChange={action("change")} onDelete={action("delete")} options={{1: "Пункт 1", 2: "Пункт 2", 3: "Пункт 3"}}/>
   );
 };

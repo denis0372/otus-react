@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import { Rule, RuleElement } from '../types'
+import { EditorEntityEnv, Rule, RuleElement } from '../types'
 import { BasicElement} from './BasicElement'
 import { InputTextElement } from './InputTextElement'
 import { ComboBoxElement } from './ComboBoxElement'
@@ -10,9 +10,10 @@ interface EditorFieldProp {
   onCaretChange: (index: number) => void;
   onElementChange: (index: number, value: string) => void;
   rule: Rule;
+  editorEntityEnv?: EditorEntityEnv;
 }
 
-export const EditorField: FC<EditorFieldProp> = ({rule, onDelete, onCaretChange, onElementChange}) => (
+export const EditorField: FC<EditorFieldProp> = ({rule, onDelete, onCaretChange, onElementChange, editorEntityEnv}) => (
     <div className="editor-panel">
       {
         rule.elements?.map((element, index) => (
@@ -26,11 +27,15 @@ export const EditorField: FC<EditorFieldProp> = ({rule, onDelete, onCaretChange,
                         return <InputTextElement element={element} index={index} key={index} onDelete={onDelete} onChange={onElementChange}/>   
                       
                       case 'device_type':
+                        return <ComboBoxElement element={element} index={index} key={index} onDelete={onDelete} onChange={onElementChange} options={editorEntityEnv?.deviceTypesListOptions}/>   
                       case 'location':
+                        return <ComboBoxElement element={element} index={index} key={index} onDelete={onDelete} onChange={onElementChange} options={editorEntityEnv?.locationsListOptions}/>   
                       case 'schedule':
+                        return <ComboBoxElement element={element} index={index} key={index} onDelete={onDelete} onChange={onElementChange} options={editorEntityEnv?.scheduleListOptions}/>   
                       case 'rat':
+                        return <ComboBoxElement element={element} index={index} key={index} onDelete={onDelete} onChange={onElementChange} options={editorEntityEnv?.ratListOptions}/>   
                       case 'apn':
-                        return <ComboBoxElement element={element} index={index} key={index} onDelete={onDelete} onChange={onElementChange}/>   
+                        return <ComboBoxElement element={element} index={index} key={index} onDelete={onDelete} onChange={onElementChange} options={editorEntityEnv?.apnListOptions}/>   
 
                       default:
                         return <BasicElement index={index} element={element} key={index} onDelete={onDelete}/>;

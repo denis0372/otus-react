@@ -8,8 +8,8 @@ import { connect } from "react-redux";
 
 function mapStateToProps(state: AppState) { 
   return {
-    cursorPosition: state.conditions.cursorPosition,
-    elements: state.conditions.elements,
+    rule: state.conditions.rule,
+    editorEntityEnv: state.conditions.editorEntityEnv,
   }
 }
 
@@ -20,7 +20,8 @@ const mapDispatchToProps = {
   conditionSave: actions.conditionSave, 
   conditionClear: actions.conditionClear, 
   conditionEdit: actions.conditionEdit, 
-  conditionCaretControl: actions. conditionCaretControl
+  conditionCaretControl: actions.conditionCaretControl,
+  conditionEditorInit: actions.conditionEditorInit,
 }; 
 
 type RawConditionsScreenProps = ReturnType<typeof mapStateToProps> &
@@ -40,11 +41,15 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
   onElementChange = (index: number, value: string) => {
     this.props["conditionChangeElement"]({index, value});
   }
+
+  componentDidMount() {
+    this.props.conditionEditorInit();
+  }
   
   render() {
     return (
       <div>
-      <EditorField rule={this.props} onDelete={this.onRemoveElementClick} onCaretChange={this.props["conditionCaretControl"]} onElementChange={this.onElementChange}/>
+      <EditorField rule={this.props.rule} editorEntityEnv={this.props.editorEntityEnv} onDelete={this.onRemoveElementClick} onCaretChange={this.props["conditionCaretControl"]} onElementChange={this.onElementChange}/>
       <ul className="editor-add-buttons">
 					<li style={{paddingBlockEnd: 20}}>Добавить: </li>
 					<li>
@@ -87,7 +92,7 @@ export class RawConditionsScreen extends React.Component<RawConditionsScreenProp
 
         <button id="clear_btn" onClick={this.props["conditionClear"]}>очистить</button>
         <button id="edit_btn" onClick={this.props["conditionEdit"]}>загрузить</button>
-        <button id="save_btn" onClick={() => this.props["conditionSave"]({cursorPosition: this.props.cursorPosition, elements: this.props.elements})}>сохранить</button>
+        <button id="save_btn" onClick={() => this.props["conditionSave"]({cursorPosition: this.props.rule.cursorPosition, elements: this.props.rule.elements})}>сохранить</button>
 
         <pre>{JSON.stringify(this.props, null, 2)}</pre> 
       </div>

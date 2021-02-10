@@ -18,7 +18,7 @@ export const getLocationsList = async <Array> () => {
     };
 }
 
-export const getScheduleList = async <Array> () => {
+export const getScheduleList = async <Object> () => {
     return {
         1: "Все дни",
         2: "Будние дни",
@@ -27,7 +27,7 @@ export const getScheduleList = async <Array> () => {
     };
 }
 
-export const getAPNList = async <Array> () => {
+export const getAPNList = async <Object> () => {
     return {
         1: "APN 1",
         2: "APN 2",
@@ -37,7 +37,7 @@ export const getAPNList = async <Array> () => {
     };
 }
 
-export const getRATList = async <Array> () => {
+export const getRATList = async <Object> () => {
     return {
         1: "GSM",
         2: "LTE",
@@ -45,7 +45,7 @@ export const getRATList = async <Array> () => {
     };
 }
 
-export const getDeviceTypesList = async <Array> () => {
+export const getDeviceTypesList = async <Object> () => {
     return {
         0: "Не существует",
         1: "Modem",

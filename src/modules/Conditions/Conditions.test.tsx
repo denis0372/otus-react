@@ -11,10 +11,12 @@ describe("ConditionsScreen", () => {
 
   beforeEach(() => {
     store = mockStore({conditions: {
-      cursorPosition: 1,
-      elements: [
-        {type: "and"},
-      ],
+      rule: {
+        cursorPosition: 1,
+        elements: [
+          {type: "and"},
+        ],
+      }
     }});
 
 

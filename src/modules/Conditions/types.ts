@@ -1,5 +1,10 @@
 /* Типы для работы */
 
+export interface ConditionsState {
+    editorEntityEnv?: EditorEntityEnv;
+    rule: Rule;
+}
+
 export interface Rule {
     cursorPosition: number;
     elements: RuleElement[];
@@ -30,4 +35,12 @@ export const RuleElementNames = {
     'ne': 'НЕ',
     'right_bracket': ')',
     'left_bracket': '('
+}
+
+export interface EditorEntityEnv {
+    scheduleListOptions: object;
+    locationsListOptions: object;
+    ratListOptions: object;
+    apnListOptions: object;
+    deviceTypesListOptions: object;
 }

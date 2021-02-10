@@ -16,7 +16,7 @@ export const App: React.FC<{}> = () => (
               <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/conditions" onClick={() => store.dispatch(conditionsActions.conditionEditorInit())}>Conditions Editor</Link>
+              <Link to="/conditions">Conditions Editor</Link>
             </li>
           </ul>
         </nav>
