@@ -24,10 +24,10 @@ module.exports = {
       enforce: 'pre',
     });
 
-    // // Remove the existing css rule
-    // config.module.rules = config.module.rules.filter(
-    //   f => f.test.toString() !== /\.css$/
-    // );
+    // Remove the existing css rule
+    config.module.rules = config.module.rules.filter(
+      f => !f.test.toString().includes('css')
+    );
     // config.module.rules.push({
     //   test: /\.css$/,
     //   use: ['style-loader', {

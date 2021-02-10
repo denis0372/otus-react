@@ -9,6 +9,50 @@ export const saveCondition = async (condition: Rule) => {
     await localStorage.setItem("condition", JSON.stringify(condition));
 };
 
+export const getLocationsList = async <Array> () => {
+    return {
+        1: "Россия",
+        2: "Германия",
+        3: "Франция",
+        4: "Китай",
+    };
+}
+
+export const getScheduleList = async <Array> () => {
+    return {
+        1: "Все дни",
+        2: "Будние дни",
+        3: "Праздники",
+        4: "Выходные",
+    };
+}
+
+export const getAPNList = async <Array> () => {
+    return {
+        1: "APN 1",
+        2: "APN 2",
+        3: "APN 3",
+        4: "APN 4",
+        5: "APN 5",
+    };
+}
+
+export const getRATList = async <Array> () => {
+    return {
+        1: "GSM",
+        2: "LTE",
+        3: "5G",
+    };
+}
+
+export const getDeviceTypesList = async <Array> () => {
+    return {
+        0: "Не существует",
+        1: "Modem",
+        2: "Phone",
+        3: "Tablet",
+    };
+}
 
 /* Типы данных для хранения */
 
