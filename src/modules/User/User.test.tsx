@@ -1,8 +1,8 @@
 import React from "react";
 
-import { UserComponent } from "./UserComponent";
+import { UserComponent } from "./User";
 import { shallow } from "enzyme";
-import { actions } from "@/components/Login/slice";
+import { actions } from "@/modules/Login/slice";
 
 
 describe("UserComponent", () => {

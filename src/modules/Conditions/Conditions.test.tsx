@@ -1,5 +1,5 @@
 import React from "react";
-import { ConditionsScreen } from "./ConditionsScreen";
+import { Conditions } from "./Conditions";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import { mount } from "enzyme";
@@ -25,7 +25,7 @@ describe("ConditionsScreen", () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <ConditionsScreen />
+        <Conditions />
       </Provider>
     );
 
@@ -47,7 +47,7 @@ describe("ConditionsScreen", () => {
     
     const wrapper = mount(
       <Provider store={store}>
-        <ConditionsScreen />
+        <Conditions />
       </Provider>
     );
 

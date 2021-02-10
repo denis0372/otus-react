@@ -3,8 +3,7 @@ import { reducer } from './reducer';
 import thunkMiddleware from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
 import { fork } from "redux-saga/effects";
-import { loginSaga } from '@/components/Login/saga'
-import { conditionsSaga } from "@/components/Conditions/saga";
+import { loginSaga, conditionsSaga } from '@/modules'
 
 const sagaMiddleware = createSagaMiddleware(); 
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LoginComponent } from "./LoginComponent";
+import { LoginComponent } from "./Login";
 import { shallow } from "enzyme";
 import { actions } from "./slice";
 

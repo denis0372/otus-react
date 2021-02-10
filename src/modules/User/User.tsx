@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom"; 
 import { AppState } from '@/rdx/reducer'; 
 import { isEmpty } from "ramda"; 
-import { actions } from "@/components/Login/slice";
+import { actions } from "@/modules/Login/slice";
 
 const mapStateToProps = ({ login }: AppState) => ({
   ...login,
