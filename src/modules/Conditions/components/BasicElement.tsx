@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import React, {FC, useState} from "react";
 import { RuleElement, RuleElementNames } from '../types'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 interface Prop {
   element: RuleElement;

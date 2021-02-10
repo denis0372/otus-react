@@ -18,9 +18,9 @@ export const conditionsSlice = createSlice({
             state.cursorPosition = state.cursorPosition + 1;
         },
     
-        conditionRemovElement (state, action: PayloadAction<number>) {
+        conditionRemoveElement (state, action: PayloadAction<number>) {
             state.elements.splice(action.payload, 1);
-            state.cursorPosition = state.cursorPosition > state.elements.length ? state.elements.length : state.cursorPosition;
+            state.cursorPosition = state.cursorPosition > action.payload ? action.payload : state.cursorPosition;
         },
     
         conditionChangeElement (state, action: PayloadAction<ElementChangeEvent>) {

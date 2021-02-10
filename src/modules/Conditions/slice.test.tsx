@@ -40,8 +40,14 @@ describe("elementsControl reducer test", () => {
             expect(state.elements.length).toEqual(0);
         });
 
-        it("condition remove element", () => {
-            const state = reducer(rule, actions.conditionRemovElement(0));
+        it("condition remove element before cursor", () => {
+            const state = reducer(rule, actions.conditionRemoveElement(0));
+            expect(state.cursorPosition).toEqual(rule.cursorPosition - 1);
+            expect(state.elements.length).toEqual(rule.elements.length - 1);
+        });
+
+        it("condition remove element after cursor", () => {
+            const state = reducer(rule, actions.conditionRemoveElement(1));
             expect(state.cursorPosition).toEqual(rule.cursorPosition);
             expect(state.elements.length).toEqual(rule.elements.length - 1);
         });

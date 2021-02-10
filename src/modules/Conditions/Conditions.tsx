@@ -14,7 +14,7 @@ function mapStateToProps(state: AppState) {
 }
 
 const mapDispatchToProps = { 
-  conditionRemovElement: actions.conditionRemovElement, 
+  conditionRemoveElement: actions.conditionRemoveElement, 
   conditionAddElement: actions.conditionAddElement, 
   conditionChangeElement: actions.conditionChangeElement, 
   conditionSave: actions.conditionSave, 
@@ -30,7 +30,7 @@ type RawConditionsScreenProps = ReturnType<typeof mapStateToProps> &
 export class RawConditionsScreen extends React.Component<RawConditionsScreenProps, {}> {
 
   onRemoveElementClick = (index: number) => {
-    this.props["conditionRemovElement"](index);
+    this.props["conditionRemoveElement"](index);
   }
 
   onAddElementClick = (element: RuleElement) => {
