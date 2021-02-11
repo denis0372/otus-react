@@ -56,7 +56,7 @@ export const getRATList = async () => {
 
 const deviceTypesList: Option[] = [
     {id: 0, value: "Не существует"},
-    {id: 2, value: "Modem"},
+    {id: 1, value: "Modem"},
     {id: 2, value: "Phone"},
     {id: 3, value: "Tablet"},
 ];
