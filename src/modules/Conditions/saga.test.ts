@@ -4,6 +4,8 @@ import { actions } from "./slice";
 import { getCondition } from "@/api/conditions";
 import { Rule } from "./types";
 
+import { expectSaga, testSaga } from "redux-saga-test-plan";
+
 const rule : Rule = {
   cursorPosition: 1,
   elements: []
