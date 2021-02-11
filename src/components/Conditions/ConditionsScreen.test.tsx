@@ -16,9 +16,6 @@ describe("ConditionsScreen", () => {
         {type: "and"},
       ],
     }});
-
-
-    jest.spyOn(store, "dispatch");
   });
 
   it("should generate action conditionAddElement on click add_btn_and", () => {

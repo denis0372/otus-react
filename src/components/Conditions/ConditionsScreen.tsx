@@ -1,10 +1,9 @@
 import React from "react";
 import { EditorField } from './components/EditorField'; 
-import { Rule, RuleElement, RuleElementNames } from './types'
+import { RuleElement, RuleElementNames } from './types'
 import { actions } from "./slice";
 import { AppState } from '@/rdx/reducer'; 
 import { connect } from "react-redux"; 
-import { authorizedOnlyHoc } from "@/utils/authorizedOnlyHOC";
 
 
 function mapStateToProps(state: AppState) { 
