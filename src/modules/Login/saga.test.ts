@@ -43,16 +43,57 @@ describe("Login saga", () => {
       .run();
   });
 
-  // it("loginSaga default login success", () => {
-  //   const user = "SomeUser";
-  //   const saga = testSaga(loginSaga);
-  //   saga
-  //     .next()
-  //     .fork(checkUserSession)
-  //     .next(user)
-  //     .take(actions.login.type)
-  //     .next(actions.login(user))
-  //     .call(login, user)
-  //     .finish();
-  // });
+  it("loginSaga login success", () => {
+    const user = "SomeUser";
+    const saga = testSaga(loginSaga);
+    saga
+    .next()
+    .fork(checkUserSession)
+    .next(user)
+    .take(actions.login.type)
+    .next(actions.login(user))
+    .call(login, user)
+    .finish();
+  });
+
+  it("loginSaga login fails", () => {
+    const user = "";
+    const saga = testSaga(loginSaga);
+    saga
+      .next()
+      .fork(checkUserSession)
+      .next(user)
+      .take(actions.login.type)
+      .next(actions.login(user))
+      .take(actions.logout.type)
+      .finish();
+  });
+
+  /*
+    По сути покрывает одним тестом два предыдущих сценария,
+    но их оставим для примера на память :)
+  */
+  it("loginSaga user login full flow", () => {
+    const emptyUserSession = "";
+    const user = "SomeUser";
+    const saga = testSaga(loginSaga);
+    saga
+      .next()
+      .fork(checkUserSession)
+      .save("LoginSagaDefaultLoginFlow") // сохранили точку
+      .next()
+      .take(actions.login.type)
+      .next(actions.login(emptyUserSession))
+      .take(actions.logout.type)
+      .restore("LoginSagaDefaultLoginFlow")  // восстановили точку
+      .next()
+      .take(actions.login.type)
+      .next(actions.login(user))
+      .call(login, user)
+      .next()
+      .take(actions.logout.type)
+      .next()
+      .call(logout)
+      .finish();
+  });
 });

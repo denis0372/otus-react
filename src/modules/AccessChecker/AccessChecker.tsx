@@ -1,24 +1,23 @@
 import React, { ReactNode, FC } from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { AppState } from '@/rdx/reducer'; 
 import { CheckState } from "@/modules/Login/slice";
 
-const mapStateToProps = ({ login }: AppState) => ({
-  ...login,
-});
 
-export interface Props extends ReturnType<typeof mapStateToProps> {
+export interface Props {
   children: ReactNode;
   redirectPath?: string;
 }
 
-export const AccessCheckerComponent: FC<Props> = ({
+export const AccessChecker: FC<Props> = ({
   children,
-  status,
   redirectPath = "/login",
 }) => {
+
+  const status = useSelector(({ login }: AppState) => login.status);
+
   if (status === CheckState.initiated) {
     return <div>Checking if user is authorized...</div>;
   }
@@ -29,5 +28,3 @@ export const AccessCheckerComponent: FC<Props> = ({
 
   return <>{children}</>;
 };
-
-export const AccessChecker = connect(mapStateToProps)(AccessCheckerComponent);

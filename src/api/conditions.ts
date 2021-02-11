@@ -38,6 +38,7 @@ const apnList: Option[] = [
     {id: 3, value:"APN 3"},
     {id: 4, value:"APN 4"},
     {id: 5, value:"APN 5"},
+    {id: 6, value:"APN 6"},
 ];
 
 export const getAPNList = async () => {
@@ -56,7 +57,7 @@ export const getRATList = async () => {
 
 const deviceTypesList: Option[] = [
     {id: 0, value: "Не существует"},
-    {id: 2, value: "Modem"},
+    {id: 1, value: "Modem"},
     {id: 2, value: "Phone"},
     {id: 3, value: "Tablet"},
 ];
