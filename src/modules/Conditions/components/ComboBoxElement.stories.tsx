@@ -1,6 +1,6 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, text, number, select } from "@storybook/addon-knobs";
+import { withKnobs, number, select } from "@storybook/addon-knobs";
 import { ComboBoxElement } from "./ComboBoxElement";
 import { RuleElement } from "../types";
 
@@ -19,6 +19,9 @@ export const ComboBoxElementStory: React.FC<{}> = () => {
   const index = number("Index", 0);
 
   return (
-    <ComboBoxElement index={index} element={value} onChange={action("change")} onDelete={action("delete")} options={{1: "Пункт 1", 2: "Пункт 2", 3: "Пункт 3"}}/>
+    <ComboBoxElement index={index} element={value} 
+        onChange={action("change")} onDelete={action("delete")} 
+        options={[{id: 1, value: "Пункт 1"}, {id: 2, value: "Пункт 2"}, {id: 3, value: "Пункт 3"}]}
+    />
   );
 };

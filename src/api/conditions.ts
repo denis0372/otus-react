@@ -1,4 +1,5 @@
-import { Rule } from '@/modules/Conditions/types'
+import { Rule, Option } from '@/modules/Conditions/types'
+
 
 export const getCondition = async <Rule extends Object> () => {
     const condition = await localStorage.getItem("condition");
@@ -9,50 +10,61 @@ export const saveCondition = async (condition: Rule) => {
     await localStorage.setItem("condition", JSON.stringify(condition));
 };
 
-export const getLocationsList = async <Array> () => {
-    return {
-        1: "Россия",
-        2: "Германия",
-        3: "Франция",
-        4: "Китай",
-    };
+const locationsList: Option[] = [
+    {id: 1, value: "Россия"},
+    {id: 2, value:"Германия"},
+    {id: 3, value:"Франция"},
+    {id: 4, value:"Китай"},
+];
+
+export const getLocationsList = async () => {
+    return locationsList;
 }
 
-export const getScheduleList = async <Object> () => {
-    return {
-        1: "Все дни",
-        2: "Будние дни",
-        3: "Праздники",
-        4: "Выходные",
-    };
+const scheduleList: Option[] = [
+    {id: 1, value:"Все дни"},
+    {id: 2, value:"Будние дни"},
+    {id: 3, value:"Праздники"},
+    {id: 4, value:"Выходные"},
+];
+
+export const getScheduleList = async () => {
+    return scheduleList;
 }
 
-export const getAPNList = async <Object> () => {
-    return {
-        1: "APN 1",
-        2: "APN 2",
-        3: "APN 3",
-        4: "APN 4",
-        5: "APN 5",
-    };
+const apnList: Option[] = [
+    {id: 1, value:"APN 1"},
+    {id: 2, value:"APN 2"},
+    {id: 3, value:"APN 3"},
+    {id: 4, value:"APN 4"},
+    {id: 5, value:"APN 5"},
+];
+
+export const getAPNList = async () => {
+    return apnList;
 }
 
-export const getRATList = async <Object> () => {
-    return {
-        1: "GSM",
-        2: "LTE",
-        3: "5G",
-    };
+const ratList: Option[] = [
+    {id: 1, value:"GSM"},
+    {id: 2, value:"LTE"},
+    {id: 3, value:"5G"},
+];
+
+export const getRATList = async () => {
+    return ratList;
 }
 
-export const getDeviceTypesList = async <Object> () => {
-    return {
-        0: "Не существует",
-        1: "Modem",
-        2: "Phone",
-        3: "Tablet",
-    };
+const deviceTypesList: Option[] = [
+    {id: 0, value: "Не существует"},
+    {id: 2, value: "Modem"},
+    {id: 2, value: "Phone"},
+    {id: 3, value: "Tablet"},
+];
+
+export const getDeviceTypesList = async () => {
+    return deviceTypesList;
 }
+
 
 /* Типы данных для хранения */
 
