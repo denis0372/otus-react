@@ -1,5 +1,4 @@
 import { call } from "redux-saga/effects";
-
 import { conditionEdit, conditionSave, conditionsSaga } from "./saga";
 import { actions } from "./slice";
 import { getCondition } from "@/api/conditions";

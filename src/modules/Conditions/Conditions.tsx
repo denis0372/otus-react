@@ -28,7 +28,7 @@ type RawConditionsScreenProps = ReturnType<typeof mapStateToProps> &
   typeof mapDispatchToProps;
 
 
-export class RawConditionsScreen extends React.Component<RawConditionsScreenProps, {}> {
+export class RawConditionsScreen extends React.Component<RawConditionsScreenProps> {
 
   onRemoveElementClick = (index: number) => {
     this.props["conditionRemoveElement"](index);

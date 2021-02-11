@@ -1,8 +1,6 @@
 import { call } from "redux-saga/effects";
-
 import { checkUserSession, saveUserSession } from "./saga";
 import { actions } from "./slice";
-
 import { getUserSession } from "@/api/auth";
 
 describe("Login saga", () => {

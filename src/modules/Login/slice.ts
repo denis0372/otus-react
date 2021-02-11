@@ -20,19 +20,13 @@ export const loginSlice = createSlice({
   reducers: {
     login: (state, { payload }: PayloadAction<string>) => { 
       if (payload.length > 0) {
-        return {
-          username: payload, 
-          status: CheckState.succeed 
-        };
-      } else {
-        return state;
+        state.username = payload;
+        state.status = CheckState.succeed;
       }
     },
-    logout: () => {
-      return {
-        username: "",
-        status: CheckState.failed,
-      }
+    logout: (state) => {
+      state.username = "";
+      state.status = CheckState.failed;
     },
   },
 });

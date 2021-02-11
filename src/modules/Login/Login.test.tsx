@@ -1,18 +1,33 @@
 import React from "react";
-
-import { LoginComponent } from "./Login";
-import { shallow } from "enzyme";
+import { Login } from "./Login";
+import { mount } from "enzyme";
 import { actions } from "./slice";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 
+const mockStore = configureStore();
 
-describe("LoginComponent", () => {
+describe("Login", () => {
+
+  let store: any;
+
+  beforeEach(() => {
+    store = mockStore({
+      login: {
+        username: '',
+      }
+    });
+  });
+
   it("login action", async () => {
     
     jest.spyOn(actions, "login"); 
 
     const name = "BobMarley";
-    const screen = shallow(
-       <LoginComponent username="" login={actions.login} /> 
+    const screen = mount(
+      <Provider store={store}>
+          <Login /> 
+      </Provider>
     );
 
     screen.find("input").simulate("change", { target: { value: name } });
