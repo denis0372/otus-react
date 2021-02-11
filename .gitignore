@@ -3,3 +3,8 @@ dist
 storybook-static
 .loki
 .vscode
+coverage
+
+# stryker temp files
+.stryker-tmp
+reports/mutation/html/index.html
