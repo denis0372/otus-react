@@ -18,7 +18,7 @@ export const loginSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: (state, { payload }: PayloadAction<string>) => { 
+    login: (state, { payload }: PayloadAction<string>) => {
       if (payload.length > 0) {
         state.username = payload;
         state.status = CheckState.succeed;
@@ -31,4 +31,4 @@ export const loginSlice = createSlice({
   },
 });
 
-export const { reducer, actions } = loginSlice; 
+export const { reducer, actions } = loginSlice;

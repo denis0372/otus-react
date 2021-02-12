@@ -9,26 +9,26 @@ import "@/styles.css";
 export const App: React.FC<{}> = () => (
   <Provider store={store}>
     <Router>
-        <Header />
-        <nav>
-          <ul>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/conditions">Conditions Editor</Link>
-            </li>
-          </ul>
-        </nav>
-        <Switch>
-          <Route path="/login">
-            <SignIn />
-          </Route>
-          <Route path="/conditions" component={ConditionsScreen} />
-          <Route path="*">
-            <NoMatch />
-          </Route>
-        </Switch>
+      <Header />
+      <nav>
+        <ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/conditions">Conditions Editor</Link>
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path="/login">
+          <SignIn />
+        </Route>
+        <Route path="/conditions" component={ConditionsScreen} />
+        <Route path="*">
+          <NoMatch />
+        </Route>
+      </Switch>
     </Router>
   </Provider>
 );

@@ -42,7 +42,7 @@ describe("authorizedOnlyHoc", () => {
     await sleep(10);
     wrapper.update();
     expect(wrapper.html()).toMatchInlineSnapshot(
-      `"<div>Redirect: {\\"to\\":\\"/login\\"}</div>"` 
+      `"<div>Redirect: {\\"to\\":\\"/login\\"}</div>"`
     );
   });
 });

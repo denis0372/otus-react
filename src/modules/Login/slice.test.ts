@@ -8,10 +8,7 @@ describe("Login reducer", () => {
   });
   it("Attempt login as Denis", () => {
     expect(
-      loginSlice.reducer(
-        initialState,
-        loginSlice.actions.login("Denis")
-      )
+      loginSlice.reducer(initialState, loginSlice.actions.login("Denis"))
     ).toEqual({ username: "Denis", status: CheckState.succeed });
   });
   it("Logout action", () => {
@@ -19,5 +16,4 @@ describe("Login reducer", () => {
       loginSlice.reducer({ username: "Denis" }, loginSlice.actions.logout())
     ).toEqual({ username: "", status: CheckState.failed });
   });
-
 });

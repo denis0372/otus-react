@@ -13,7 +13,9 @@ type OrderState = typeof orderStates[number];
 type OrderStateTrunc = Exclude<OrderState, "buyingSupplies" | "producing">;
 
 // Hint: type guards
-export const getUserOrderStates = (orderStates: OrderState[]): OrderStateTrunc[] =>
+export const getUserOrderStates = (
+  orderStates: OrderState[]
+): OrderStateTrunc[] =>
   orderStates.filter(
     (state) => state !== "buyingSupplies" && state !== "producing"
   ) as OrderStateTrunc[];

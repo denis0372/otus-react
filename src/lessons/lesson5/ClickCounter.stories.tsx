@@ -11,7 +11,5 @@ export default {
 export const ClickCounterStory: React.FC<{}> = () => {
   const count = number("Start value", 0);
 
-  return (
-    <ClickCounter start={count}/>
-  );
+  return <ClickCounter start={count} />;
 };

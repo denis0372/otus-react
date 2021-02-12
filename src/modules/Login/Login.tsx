@@ -1,13 +1,11 @@
 import React, { useCallback, useState } from "react";
-import { AppState } from '@/rdx/reducer'; 
+import { AppState } from "@/rdx/reducer";
 import { actions } from "./slice";
 import { useDispatch, useSelector } from "react-redux";
-import { isEmpty } from "ramda"; 
+import { isEmpty } from "ramda";
 import { Redirect } from "react-router-dom";
 
-
-export const Login: React.FC = () => { 
-
+export const Login: React.FC = () => {
   const dispatch = useDispatch();
   const username = useSelector(({ login }: AppState) => login.username);
   const [name, setName] = useState(username);
@@ -17,12 +15,12 @@ export const Login: React.FC = () => {
       ev.preventDefault();
       if (!isEmpty(name)) {
         dispatch(actions.login(name));
-      } 
+      }
     },
     [name, dispatch]
   );
 
-  return isEmpty(username) ? ( 
+  return isEmpty(username) ? (
     <form onSubmit={onSubmit}>
       <label>
         Name:
@@ -34,7 +32,7 @@ export const Login: React.FC = () => {
       </label>
       <button>Login</button>
     </form>
-  ) : 
-    <Redirect to="/conditions" /> 
-  ;
+  ) : (
+    <Redirect to="/conditions" />
+  );
 };
