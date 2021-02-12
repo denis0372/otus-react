@@ -11,11 +11,9 @@ interface Prop {
 
 export const BasicElement: FC<Prop> = ({element, index, onDelete}) => {
 
-  const [mouseOver, onMouseOver] = useState(0);
-
   return (
-    <div className={`editor-block editor-block-${element.type}`} onMouseEnter={() => onMouseOver(1)} onMouseLeave={() => onMouseOver(0)}>{RuleElementNames[element.type]}
-        <div className={`delete-block ${mouseOver === 1 ? 'active' : ''}`}>
+    <div className={`editor-block editor-block-${element.type}`}>{RuleElementNames[element.type]}
+        <div className="delete-block">
           <FontAwesomeIcon icon={faTimes} color="black" onClick={() => onDelete(index)}/>
         </div>
     </div>
