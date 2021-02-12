@@ -1,4 +1,10 @@
-import { OriginalTeam, ExpectedTeam, originalTeamToExpectedTeam, originalArrayToExpectedArray, originalTeamToExpectedTeam2 } from "./immutability";
+import {
+  OriginalTeam,
+  ExpectedTeam,
+  originalTeamToExpectedTeam,
+  originalArrayToExpectedArray,
+  originalTeamToExpectedTeam2,
+} from "./immutability";
 
 // Задание 1
 test("team to team", () => {

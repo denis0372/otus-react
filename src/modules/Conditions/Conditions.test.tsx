@@ -10,18 +10,17 @@ describe("ConditionsScreen", () => {
   let store: any;
 
   beforeEach(() => {
-    store = mockStore({conditions: {
-      rule: {
-        cursorPosition: 1,
-        elements: [
-          {type: "and"},
-        ],
-      }
-    }});
+    store = mockStore({
+      conditions: {
+        rule: {
+          cursorPosition: 1,
+          elements: [{ type: "and" }],
+        },
+      },
+    });
   });
 
   it("should generate action conditionAddElement on click add_btn_and", () => {
-
     const wrapper = mount(
       <Provider store={store}>
         <Conditions />
@@ -47,7 +46,6 @@ describe("ConditionsScreen", () => {
   });
 
   it("should generate action conditionSave on click save_btn", () => {
-    
     const wrapper = mount(
       <Provider store={store}>
         <Conditions />

@@ -4,9 +4,9 @@ import { actions } from "./slice";
 import { getCondition } from "@/api/conditions";
 import { Rule } from "./types";
 
-const rule : Rule = {
+const rule: Rule = {
   cursorPosition: 1,
-  elements: []
+  elements: [],
 };
 
 describe("Conditions saga", () => {

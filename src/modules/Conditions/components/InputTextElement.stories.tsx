@@ -11,12 +11,17 @@ export default {
 
 export const InputTextElementStory: React.FC<{}> = () => {
   const value: RuleElement = {
-      type: select("Type", ['device_brand', 'device_model'], 'device_brand'),
-      value: text("Initial value", '')
+    type: select("Type", ["device_brand", "device_model"], "device_brand"),
+    value: text("Initial value", ""),
   };
   const index = number("Index", 0);
 
   return (
-    <InputTextElement index={index} element={value} onChange={action("change")} onDelete={action("delete")}/>
+    <InputTextElement
+      index={index}
+      element={value}
+      onChange={action("change")}
+      onDelete={action("delete")}
+    />
   );
 };
