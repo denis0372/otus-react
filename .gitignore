@@ -3,3 +3,7 @@ dist
 storybook-static
 .loki
 .vscode
+.idea
+coverage
+reports
+otus-react.iml
