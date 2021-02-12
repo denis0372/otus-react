@@ -5,3 +5,5 @@ storybook-static
 .vscode
 reports
 coverage
+.idea
+/otus-react.iml
