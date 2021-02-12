@@ -47,11 +47,11 @@ const deviceTypesList: Option[] = [
 ];
 
 const editorEntityEnv: EditorEntityEnv = {
-  scheduleListOptions: scheduleList,
-  locationsListOptions: locationsList,
-  apnListOptions: apnList,
-  ratListOptions: ratList,
-  deviceTypesListOptions: deviceTypesList
+  schedule: scheduleList,
+  location: locationsList,
+  apn: apnList,
+  rat: ratList,
+  device_type: deviceTypesList
 }
 
 describe("Conditions saga", () => {
