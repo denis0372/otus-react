@@ -38,11 +38,11 @@ export const RuleElementNames = {
 }
 
 export interface EditorEntityEnv {
-    scheduleListOptions: Option[];
-    locationsListOptions: Option[];
-    ratListOptions: Option[];
-    apnListOptions: Option[];
-    deviceTypesListOptions: Option[];
+    schedule: Option[];
+    location: Option[];
+    rat: Option[];
+    apn: Option[];
+    device_type: Option[];
 }
 
 export interface Option {
