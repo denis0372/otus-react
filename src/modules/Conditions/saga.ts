@@ -21,11 +21,11 @@ export function* conditionEdit() {
 }
 
 export function* conditionEditorInit() {
-    const scheduleListOptions = yield call(getScheduleList);
-    const locationsListOptions = yield call(getLocationsList);
-    const apnListOptions = yield call(getAPNList);
-    const ratListOptions = yield call(getRATList);
-    const deviceTypesListOptions = yield call(getDeviceTypesList);
+    const schedule = yield call(getScheduleList);
+    const location = yield call(getLocationsList);
+    const apn = yield call(getAPNList);
+    const rat = yield call(getRATList);
+    const device_type = yield call(getDeviceTypesList);
 
-    yield put(actions.conditionEditorInitSuccess({scheduleListOptions, locationsListOptions, apnListOptions, ratListOptions, deviceTypesListOptions}));
+    yield put(actions.conditionEditorInitSuccess({schedule, location, apn, rat, device_type}));
 }
