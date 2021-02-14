@@ -21,6 +21,7 @@ import * as matchers from "redux-saga-test-plan/matchers";
 
 const rule: Rule = {
   cursorPosition: 1,
+
   elements: [
     {
       type: "device_brand",
