@@ -1,15 +1,17 @@
-import React from 'react';
-import { store } from '@/rdx/store';
+import React from "react";
+import { store } from "@/rdx/store";
 
 // if you want to get more info
 // try to check https://gist.github.com/gaearon/1d19088790e70ac32ea636c025ba424e
-export function withRedux<Props extends { dispatch?: (action: any) => void }
->(TargetComponent: React.ComponentType<Props>, 
+export function withRedux<Props extends { dispatch?: (action: any) => void }>(
+  TargetComponent: React.ComponentType<Props>,
   getPropsFromRedux: (state: any) => Partial<Props>
-  ) {
+) {
   class WrappedComponent extends React.Component<Props, {}> {
     storeSubscription?: Function;
-    state: ReturnType<typeof getPropsFromRedux> = getPropsFromRedux(store.getState());
+    state: ReturnType<typeof getPropsFromRedux> = getPropsFromRedux(
+      store.getState()
+    );
 
     render() {
       return (
@@ -18,11 +20,13 @@ export function withRedux<Props extends { dispatch?: (action: any) => void }
           {...this.state}
           {...this.props}
         />
-      )
+      );
     }
 
     componentDidMount() {
-      this.storeSubscription = store.subscribe(() => this.setState(getPropsFromRedux(store.getState)));
+      this.storeSubscription = store.subscribe(() =>
+        this.setState(getPropsFromRedux(store.getState))
+      );
     }
 
     componentWillUnmount() {
@@ -33,4 +37,4 @@ export function withRedux<Props extends { dispatch?: (action: any) => void }
   (WrappedComponent as any).displayName = `${TargetComponent.displayName}ConnectedToRedux`;
 
   return WrappedComponent;
-} 
+}

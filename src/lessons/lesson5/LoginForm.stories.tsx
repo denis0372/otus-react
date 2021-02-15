@@ -7,7 +7,5 @@ export default {
 };
 
 export const LoginFormStory: React.FC<{}> = () => {
-  return (
-    <LoginForm/>
-  );
+  return <LoginForm />;
 };

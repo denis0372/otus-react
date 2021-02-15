@@ -1,6 +1,11 @@
 import { parser } from "./parser";
 
-import { firstPrioritiesCalc, secondPrioritiesCalc, thirdPrioritiesCalc, simplifyExp } from "./engine";
+import {
+  firstPrioritiesCalc,
+  secondPrioritiesCalc,
+  thirdPrioritiesCalc,
+  simplifyExp,
+} from "./engine";
 
 export const runner = (line: string): number => {
   const stack = parser(simplifyExp(line));

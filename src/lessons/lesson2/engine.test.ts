@@ -1,4 +1,9 @@
-import { firstPrioritiesCalc, secondPrioritiesCalc, thirdPrioritiesCalc, simplifyExp } from "./engine";
+import {
+  firstPrioritiesCalc,
+  secondPrioritiesCalc,
+  thirdPrioritiesCalc,
+  simplifyExp,
+} from "./engine";
 
 describe("firstPrioritiesCalc simple cases", () => {
   it("[2, ^ 3]", () => {

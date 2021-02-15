@@ -16,16 +16,19 @@ export type ExpectedTeam = {
 export const originalTeamToExpectedTeam = (
   originalTeam: OriginalTeam
 ): ExpectedTeam => {
-  const {league} = originalTeam;
-  return {name: "New York Badgers", league, roster: 25};
+  const { league } = originalTeam;
+  return { name: "New York Badgers", league, roster: 25 };
 };
 
 // Задание 2
 export type SomeArray = Array<number | string>;
 
-export const originalArrayToExpectedArray = (originalArray: Readonly<SomeArray>): SomeArray => {
-
-  let result = originalArray.map((elt) => typeof elt === "number" ? elt + 1 : elt);
+export const originalArrayToExpectedArray = (
+  originalArray: Readonly<SomeArray>
+): SomeArray => {
+  const result = originalArray.map((elt) =>
+    typeof elt === "number" ? elt + 1 : elt
+  );
   result[0] = "two";
 
   return result;
@@ -42,9 +45,8 @@ export type Team = {
 };
 
 export const originalTeamToExpectedTeam2 = (originalTeam: Team): Team => {
-
-  let result = JSON.parse(JSON.stringify(originalTeam));
+  const result = JSON.parse(JSON.stringify(originalTeam));
   result.captain.age = 28;
 
   return result;
-}
+};
