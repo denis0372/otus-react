@@ -10,10 +10,14 @@ export default {
 };
 
 export const InputTextStory: React.FC<{}> = () => {
-  const value = text("Initial value", '');
-  const placeHolder = text("PlaceHolder", '');
+  const value = text("Initial value", "");
+  const placeHolder = text("PlaceHolder", "");
 
   return (
-    <InputText value={value} placeHolder={placeHolder} onChangeAction={action("change")}/>
+    <InputText
+      value={value}
+      placeHolder={placeHolder}
+      onChangeAction={action("change")}
+    />
   );
 };

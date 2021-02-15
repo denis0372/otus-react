@@ -9,19 +9,26 @@ export default {
   decorators: [withKnobs],
 };
 
-const locations = ['Russia', 'Germany', 'France', 'China'];
+const locations = ["Russia", "Germany", "France", "China"];
 
 export const ComboBoxElementStory: React.FC<{}> = () => {
   const value: RuleElement = {
-      type: select("Type", ['location', 'device_type', 'apn', 'rat'], 'location'),
-      value: select("Initial value", locations, 'Russia')
+    type: select("Type", ["location", "device_type", "apn", "rat"], "location"),
+    value: select("Initial value", locations, "Russia"),
   };
   const index = number("Index", 0);
 
   return (
-    <ComboBoxElement index={index} element={value} 
-        onChange={action("change")} onDelete={action("delete")} 
-        options={[{id: 1, value: "Пункт 1"}, {id: 2, value: "Пункт 2"}, {id: 3, value: "Пункт 3"}]}
+    <ComboBoxElement
+      index={index}
+      element={value}
+      onChange={action("change")}
+      onDelete={action("delete")}
+      options={[
+        { id: 1, value: "Пункт 1" },
+        { id: 2, value: "Пункт 2" },
+        { id: 3, value: "Пункт 3" },
+      ]}
     />
   );
 };

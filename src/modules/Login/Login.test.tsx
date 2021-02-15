@@ -8,25 +8,23 @@ import configureStore from "redux-mock-store";
 const mockStore = configureStore();
 
 describe("Login", () => {
-
   let store: any;
 
   beforeEach(() => {
     store = mockStore({
       login: {
-        username: '',
-      }
+        username: "",
+      },
     });
   });
 
   it("login action", async () => {
-    
-    jest.spyOn(actions, "login"); 
+    jest.spyOn(actions, "login");
 
     const name = "BobMarley";
     const screen = mount(
       <Provider store={store}>
-          <Login /> 
+        <Login />
       </Provider>
     );
 
@@ -35,6 +33,6 @@ describe("Login", () => {
       .find("form")
       .simulate("submit", { preventDefault: () => null });
 
-      expect(actions.login).toHaveBeenCalledWith(name); 
+    expect(actions.login).toHaveBeenCalledWith(name);
   });
 });

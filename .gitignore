@@ -3,8 +3,7 @@ dist
 storybook-static
 .loki
 .vscode
+.idea
 coverage
-
-# stryker temp files
-.stryker-tmp
-reports/mutation/html/index.html
+reports
+otus-react.iml

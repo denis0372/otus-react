@@ -11,11 +11,15 @@ export default {
 
 export const BasicElementStory: React.FC<{}> = () => {
   const value: RuleElement = {
-      type: select("Type", ['and', 'or', 'ne', 'right_bracket', 'left_bracket'], 'and'),
+    type: select(
+      "Type",
+      ["and", "or", "ne", "right_bracket", "left_bracket"],
+      "and"
+    ),
   };
   const index = number("Index", 0);
 
   return (
-    <BasicElement index={index} element={value} onDelete={action("delete")}/>
+    <BasicElement index={index} element={value} onDelete={action("delete")} />
   );
 };

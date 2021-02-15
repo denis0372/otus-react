@@ -9,7 +9,7 @@ export function* checkUserSession() {
     yield put(actions.login(userSession));
   } else {
     yield put(actions.logout());
-    yield clearUserSession()
+    yield clearUserSession();
   }
 }
 
@@ -35,4 +35,3 @@ export function* loginSaga() {
     yield* clearUserSession();
   }
 }
-

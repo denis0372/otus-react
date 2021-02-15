@@ -16,8 +16,7 @@ type OrderFirstLevel =
       state: "inWork";
       sum: number;
       workerId: number;
-    }
-  ;
+    };
 
 type OrderSecondLevel =
   | {
@@ -42,9 +41,11 @@ type OrderSecondLevel =
       fullfillmentDate: Date;
     };
 
-  type Order = OrderFirstLevel | OrderSecondLevel;
+type Order = OrderFirstLevel | OrderSecondLevel;
 
-export const filterOnlyInitialAndInWorkOrder = (order: Order): OrderFirstLevel | null => {
+export const filterOnlyInitialAndInWorkOrder = (
+  order: Order
+): OrderFirstLevel | null => {
   if (order.state === "initial" || order.state === "inWork") {
     return order;
   }
