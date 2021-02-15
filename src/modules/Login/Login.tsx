@@ -9,6 +9,7 @@ export const Login: React.FC = () => {
   const dispatch = useDispatch();
   const username = useSelector(({ login }: AppState) => login.username);
   const [name, setName] = useState(username);
+  const [passwd, setPasswd] = useState("");
 
   const onSubmit = useCallback(
     async (ev) => {
@@ -21,17 +22,42 @@ export const Login: React.FC = () => {
   );
 
   return isEmpty(username) ? (
-    <form onSubmit={onSubmit}>
-      <label>
-        Name:
-        <input
-          placeholder="Введите ваше имя"
-          value={name}
-          onChange={(ev) => setName((ev.target as HTMLInputElement).value)}
-        />
-      </label>
-      <button>Login</button>
-    </form>
+    <div id="authpage">
+      <form onSubmit={onSubmit}>
+        <div className="spanel">
+          <h3>Авторизация</h3>
+          <div className="spanel_content">
+            <table className="auth_form" width="100%">
+              <tr>
+                <td className="label">Логин</td>
+                <td className="value">
+                  <input className="input_field"
+                    placeholder="Имя пользователя"
+                    value={name}
+                    onChange={(ev) => setName((ev.target as HTMLInputElement).value)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="label">Пароль</td>
+                <td className="value">
+                  <input className="input_field"
+                    placeholder="Пароль"
+                    value={passwd}
+                    onChange={(ev) => setPasswd((ev.target as HTMLInputElement).value)}
+                  />
+                </td>
+              </tr>
+
+              <tr>
+              <td className="label"></td>
+              <td><button>Login</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </form>
+    </div>
   ) : (
     <Redirect to="/conditions" />
   );

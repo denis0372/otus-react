@@ -47,7 +47,10 @@ export class RawConditionsScreen extends React.Component<
 
   render() {
     return (
-      <div>
+      <div className="site_main_panel">
+
+        <h5>Conditions editor</h5>
+
         <EditorField
           rule={this.props.rule}
           editorEntityEnv={this.props.editorEntityEnv}
@@ -149,13 +152,13 @@ export class RawConditionsScreen extends React.Component<
           </li>
         </ul>
 
-        <button id="clear_btn" onClick={this.props.conditionClear}>
+        <button className="web_btn" id="clear_btn" onClick={this.props.conditionClear}>
           очистить
         </button>
-        <button id="edit_btn" onClick={this.props.conditionEdit}>
+        <button className="web_btn" id="edit_btn" onClick={this.props.conditionEdit}>
           загрузить
         </button>
-        <button
+        <button className="web_btn"
           id="save_btn"
           onClick={() =>
             this.props.conditionSave({
@@ -166,8 +169,6 @@ export class RawConditionsScreen extends React.Component<
         >
           сохранить
         </button>
-
-        <pre>{JSON.stringify(this.props, null, 2)}</pre>
       </div>
     );
   }

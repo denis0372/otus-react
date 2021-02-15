@@ -1,5 +1,9 @@
 import React from "react";
 
-import { User } from "@/modules";
+import { AccessChecker, Header as HeaderComponent } from "@/modules";
 
-export const Header = () => <User />;
+export const Header = () => (
+    <AccessChecker>
+        <HeaderComponent />
+    </AccessChecker>
+);

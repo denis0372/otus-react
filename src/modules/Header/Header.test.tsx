@@ -1,6 +1,6 @@
 import React from "react";
 
-import { UserComponent } from "./User";
+import { HeaderComponent } from "./Header";
 import { shallow } from "enzyme";
 import { actions } from "@/modules/Login/slice";
 
@@ -9,7 +9,7 @@ describe("UserComponent", () => {
     jest.spyOn(actions, "logout");
 
     const screen = shallow(
-      <UserComponent username="Denis" logout={actions.logout} />
+      <HeaderComponent username="Denis" logout={actions.logout} />
     );
 
     const btn = screen.find("button");
