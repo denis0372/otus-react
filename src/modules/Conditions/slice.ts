@@ -6,6 +6,7 @@ import {
   RuleElement,
 } from "./types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import undoable from 'redux-undo'
 
 const initialState: ConditionsState = {
   rule: {
@@ -60,5 +61,7 @@ export const conditionsSlice = createSlice({
     },
   },
 });
+
+export const undoableReducer = undoable(conditionsSlice.reducer);
 
 export const { reducer, actions } = conditionsSlice;

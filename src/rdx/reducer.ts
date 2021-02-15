@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { loginSlice, conditionsSlice } from "@/modules";
+import { loginSlice, undoableReducer } from "@/modules";
 
 export const reducer = combineReducers({
-  conditions: conditionsSlice.reducer,
+  conditions: undoableReducer,
   login: loginSlice.reducer,
 });
 

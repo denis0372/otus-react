@@ -4,6 +4,8 @@ import { ErrorBoundary } from "@/components";
 
 export const ConditionsScreen: FC<{}> = () => (
   <ErrorBoundary>
-    <Conditions />
+    <AccessChecker>
+      <Conditions />
+    </AccessChecker>
   </ErrorBoundary>
 );

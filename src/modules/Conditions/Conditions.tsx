@@ -4,15 +4,19 @@ import { RuleElement, RuleElementNames } from "./types";
 import { actions } from "./slice";
 import { AppState } from "@/rdx/reducer";
 import { connect } from "react-redux";
+import { ActionCreators as UndoActionCreators } from 'redux-undo'
+
 
 function mapStateToProps(state: AppState) {
   return {
-    rule: state.conditions.rule,
-    editorEntityEnv: state.conditions.editorEntityEnv,
+    rule: state.conditions.present.rule,
+    editorEntityEnv: state.conditions.present.editorEntityEnv,
+    canUndo: state.conditions.past.length > 0,
+    canRedo: state.conditions.future.length > 0
   };
 }
 
-const mapDispatchToProps = {
+const mapDispatchToProps =  {
   conditionRemoveElement: actions.conditionRemoveElement,
   conditionAddElement: actions.conditionAddElement,
   conditionChangeElement: actions.conditionChangeElement,
@@ -21,6 +25,8 @@ const mapDispatchToProps = {
   conditionEdit: actions.conditionEdit,
   conditionCaretControl: actions.conditionCaretControl,
   conditionEditorInit: actions.conditionEditorInit,
+  onUndo: UndoActionCreators.undo,
+  onRedo: UndoActionCreators.redo,
 };
 
 type RawConditionsScreenProps = ReturnType<typeof mapStateToProps> &
@@ -151,6 +157,15 @@ export class RawConditionsScreen extends React.Component<
             </div>
           </li>
         </ul>
+
+        <p>
+          <button className="web_btn" onClick={this.props.onUndo} disabled={!this.props.canUndo}>
+            Undo
+          </button>
+          <button className="web_btn" onClick={this.props.onRedo} disabled={!this.props.canRedo}>
+            Redo
+          </button>
+        </p>
 
         <button className="web_btn" id="clear_btn" onClick={this.props.conditionClear}>
           очистить
