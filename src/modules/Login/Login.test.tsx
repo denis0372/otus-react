@@ -28,7 +28,7 @@ describe("Login", () => {
       </Provider>
     );
 
-    screen.find("input").simulate("change", { target: { value: name } });
+    screen.find("#login").simulate("change", { target: { value: name } });
     await screen
       .find("form")
       .simulate("submit", { preventDefault: () => null });

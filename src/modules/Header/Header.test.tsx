@@ -12,7 +12,7 @@ describe("UserComponent", () => {
       <HeaderComponent username="Denis" logout={actions.logout} />
     );
 
-    const btn = screen.find("button");
+    const btn = screen.find("#btn_logout");
     await btn.simulate("click");
 
     expect(actions.logout).toHaveBeenCalled();

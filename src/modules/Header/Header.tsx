@@ -39,7 +39,7 @@ export class HeaderComponent extends PureComponent<Props> {
             <li className="last">
               <span className="tx_btn_cont">Пользователь: {username}</span>
               <span className="tx_btn_cont">&nbsp;|&nbsp;</span>
-              <a className="tx_btn_cont" onClick={this.props.logout}>Logout</a>
+              <a className="tx_btn_cont" id="btn_logout" onClick={this.props.logout}>Logout</a>
             </li>
           </ul>
           </nav>

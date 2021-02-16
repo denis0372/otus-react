@@ -2,7 +2,8 @@ import React from "react";
 import { Conditions } from "./Conditions";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
+import { actions } from "./slice";
 
 const mockStore = configureStore();
 
@@ -12,10 +13,14 @@ describe("ConditionsScreen", () => {
   beforeEach(() => {
     store = mockStore({
       conditions: {
-        rule: {
-          cursorPosition: 1,
-          elements: [{ type: "and" }],
+        past: [],
+        present: {
+          rule: {
+            cursorPosition: 1,
+            elements: [{ type: "and" }],
+          },
         },
+        future: [],
       },
     });
   });
@@ -74,4 +79,5 @@ describe("ConditionsScreen", () => {
       ]
     `);
   });
+
 });

@@ -15,6 +15,8 @@ export const App: React.FC<{}> = () => (
             <SignIn />
           </Route>
           <Route path="/conditions" component={ConditionsScreen} />
+          <Route path="/">
+          </Route>
           <Route path="*">
             <NoMatch />
           </Route>

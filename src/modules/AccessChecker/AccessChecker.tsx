@@ -17,7 +17,7 @@ export const AccessChecker: FC<Props> = ({
   const status = useSelector(({ login }: AppState) => login.status);
 
   if (status === CheckState.initiated) {
-    return <div>Checking if user is authorized...</div>;
+    return <div></div>;
   }
 
   if (status === CheckState.failed) {

@@ -28,10 +28,11 @@ export const Login: React.FC = () => {
           <h3>Авторизация</h3>
           <div className="spanel_content">
             <table className="auth_form" width="100%">
+              <tbody>
               <tr>
                 <td className="label">Логин</td>
                 <td className="value">
-                  <input className="input_field"
+                  <input className="input_field" id="login"
                     placeholder="Имя пользователя"
                     value={name}
                     onChange={(ev) => setName((ev.target as HTMLInputElement).value)}
@@ -53,6 +54,7 @@ export const Login: React.FC = () => {
               <td className="label"></td>
               <td><button>Login</button></td>
               </tr>
+              </tbody>
             </table>
           </div>
         </div>
